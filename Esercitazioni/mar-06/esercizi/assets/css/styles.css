@@ -1,0 +1,109 @@
+html {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: lightblue;
+    padding: 1rem;
+}
+
+.float-left {
+    float: left;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+nav li,
+nav ul {
+    float: left;
+}
+
+nav li {
+    margin-right: 0.5rem;
+}
+
+.vertical-align {
+    line-height: 90px;
+}
+
+nav ul img {
+    width: 90px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+nav::after,
+ul::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.right-image {
+    float: right;
+    line-height: 90px;
+}
+
+section {
+    margin: 1rem 2rem;
+}
+
+#lezione-6 .left-div {
+    width: 30%;
+    background-color: lightseagreen;
+}
+
+#lezione-6 .right-div {
+    width: 70%;
+    background-color: lightsalmon;
+}
+
+#lezione-6 .left-div,
+#lezione-6 .right-div {
+    float: left;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+}
+
+#lezione-7 {
+    margin-top: 8rem;
+}
+
+#lezione-7 .first-div {
+    width: 20%;
+    background-color: lightskyblue;
+}
+
+#lezione-7 .second-div {
+    width: 20%;
+    background-color: lightgray;
+}
+
+#lezione-7 .third-div {
+    width: 60%;
+    background-color: lightcoral;
+}
+
+#lezione-7 .first-div,
+#lezione-7 .second-div,
+#lezione-7 .third-div {
+    float: left;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+}

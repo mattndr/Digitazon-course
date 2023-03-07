@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #chess-board {
+            width: fit-content;
+            height: fit-content;
+            border: 1px solid;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+        }
+
+        .row:nth-child(even) .cell:nth-child(even) {
+            background-color: lightblue;
+        }
+
+        .row:nth-child(even) .cell:nth-child(odd) {
+            background-color: lightslategray;
+        }
+
+        .row:nth-child(odd) .cell:nth-child(even) {
+            background-color: lightslategray;
+        }
+
+        .row:nth-child(odd) .cell:nth-child(odd) {
+            background-color: lightblue;
+        }
+
+        .row::after,
+        .clearfix::after {
+            clear: both;
+            content: "";
+            display: block;
+        }
+
+        nav {
+            margin-top: 50px;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            padding: 1rem;
+            background-color: lightgreen;
+            text-decoration: none;
+            color: black;
+        }
+
+        nav a:last-of-type {
+            float: right;
+        }
+
+        nav a:hover {
+            background-color: lightgray;
+        }
+
+        #articles {
+            margin-top: 2rem;
+        }
+
+        #articles .article-container {
+            float: left;
+            width: 33.333%;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: lightseagreen;
+        }
+
+        footer {
+            margin-top: 2rem;
+        }
+
+        .footer-left,
+        .footer-right {
+            float: left;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-left {
+            width: 20%;
+            background-color: lightsalmon;
+        }
+
+        .footer-right {
+            width: 80%;
+            background-color: rgb(203, 250, 250);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chess-board">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="clearfix">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+        </div>
+    </nav>
+
+
+    <section id="articles" class="clearfix">
+        <div class="article-container">
+            <article>
+                <h1>Article</h1>
+            </article>
+        </div>
+        <div class="article-container">
+            <article>
+                <h1>Article</h1>
+            </article>
+        </div>
+        <div class="article-container">
+            <article>
+                <h1>Article</h1>
+            </article>
+        </div>
+    </section>
+
+
+    <footer class="clearfix">
+        <div class="footer-left">Testo 1</div>
+        <div class="footer-right">Testo 2</div>
+    </footer>
+</body>
+
+</html>

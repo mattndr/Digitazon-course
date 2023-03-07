@@ -1,0 +1,80 @@
+main {
+    margin: 1.5rem;
+}
+
+#cards {
+    margin-bottom: 200px;
+}
+
+.card {
+    width: 280px;
+    height: fit-content;
+    background-color: lightblue;
+    padding: 0.8rem;
+    float: left;
+}
+
+.card-title {
+    text-align: center;
+}
+
+img {
+    width: 100px;
+}
+
+.card-image {
+    float: left;
+    margin-right: 1rem;
+}
+
+.card-avatar {
+    height: 80px;
+    width: 80px;
+    background-image: url('../images/blog-post.png');
+    background-position: center;
+    background-size: cover;
+    background-color: lightcoral;
+    float: right;
+    margin-top: 80px;
+}
+
+.clear-row {
+    clear: both;
+}
+
+.card-left {
+    margin-right: 1.4rem;
+}
+
+.card-right {
+    float: right;
+}
+
+.nav-left,
+.nav-right {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    padding: 1.3rem;
+    background-color: lightgreen;
+    margin-right: 0.5rem;
+    float: left;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-right {
+    float: right;
+}
+
+.nav-right li:last-child {
+    margin-right: 0rem;
+}

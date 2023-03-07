@@ -1,0 +1,153 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+main::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+#left-section {
+    width: 70%;
+    border: 6px solid rgb(101, 101, 252);
+}
+
+#left-section #navbar nav {
+    color: white;
+    background-color: rgb(117, 220, 255);
+    padding: 0.8rem;
+}
+
+#left-section #navbar nav::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
+#left-section #navbar nav .float-left {
+    margin-left: 1rem;
+}
+
+#left-section #navbar nav .float-right {
+    margin-right: 1rem;
+    line-height: 80px;
+}
+
+#left-section #navbar nav .float-right img {
+    vertical-align: middle;
+}
+
+#left-section #navbar nav img:hover {
+    cursor: pointer;
+}
+
+#left-section #news {
+    margin-top: 5rem;
+    padding: 0 3rem;
+}
+
+#left-section #news article {
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+#left-section #news article:nth-child(even) {
+    background-color: rgb(224, 255, 253);
+    border: 2px solid lightseagreen;
+
+}
+
+#left-section #news article:nth-child(odd) {
+    background-color: rgb(255, 230, 197);
+    border: 2px solid rgb(221, 152, 25);
+}
+
+#left-section #news article:last-of-type {
+    margin-bottom: 5rem;
+}
+
+#right-section {
+    width: 30%;
+    border: 6px solid rgb(8, 153, 39);
+    padding-top: 3rem;
+}
+
+#right-section #gallery {
+    margin-left: 4rem;
+}
+
+#right-section #gallery .row {
+    margin-top: 1rem;
+    /* opzionale */
+    width: fit-content;
+}
+
+#right-section #gallery .row::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
+#right-section #gallery .row .cell {
+    background-color: lightgreen;
+    margin-right: 1rem;
+    font-size: 0;
+}
+
+#right-section #articles {
+    margin-top: 4rem;
+    margin-left: 4rem;
+}
+
+#right-section #articles ul li a {
+    text-decoration: none;
+    margin: 0.5rem;
+}
+
+#right-section footer {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+#right-section footer .div-container {
+    text-align: center;
+    height: 4rem;
+    line-height: 4rem;
+}
+
+#right-section footer .div-container::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
+#right-section footer .left-div {
+    width: 20%;
+    background-color: lightgreen;
+}
+
+#right-section footer .right-div {
+    width: 80%;
+    background-color: lightgray;
+}

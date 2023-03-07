@@ -1,0 +1,116 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+#navbar ul {
+    list-style-type: none;
+    font-size: 0;
+    background-color: lightblue;
+    padding-inline-start: 0;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+
+#navbar ul::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+#navbar li {
+    font-size: 1rem;
+    margin-right: 0.8rem;
+}
+
+#navbar li:last-of-type {
+    margin-right: 0;
+    padding: 0 1.3rem;
+    line-height: 100px;
+}
+
+#navbar li a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 0 1rem;
+    /* Vertical alignment for text */
+    line-height: 100px;
+}
+
+#navbar li a:hover {
+    background-color: lightgreen;
+}
+
+#navbar li img {
+    vertical-align: middle;
+}
+
+#navbar .float-right img:hover {
+    cursor: pointer;
+}
+
+.section-top-margin {
+    margin-top: 7rem;
+}
+
+.section-x-margin {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+#lezione-6 .left-div {
+    width: 30%;
+    background-color: lightcoral;
+}
+
+#lezione-6 .right-div {
+    width: 70%;
+    background-color: lightskyblue;
+}
+
+.div-container {
+    text-align: center;
+    line-height: 5rem;
+    vertical-align: middle;
+}
+
+.div-container::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+#lezione-7 .left-div {
+    width: 20%;
+    background-color: lightcoral;
+}
+
+#lezione-7 .middle-div {
+    width: 20%;
+    background-color: lightskyblue;
+}
+
+#lezione-7 .right-div {
+    width: 60%;
+    background-color: lightgreen;
+}
