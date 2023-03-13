@@ -1,0 +1,42 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+}
+
+header div:last-child {
+    margin-left: auto;
+}
+
+header span {
+    padding: 5px;
+}
+
+.lesson-details {
+    display: flex;
+    border: 2px solid lightblue;
+}
+
+.lesson-topic {
+    font-weight: bold;
+    border-right: 2px solid lightcoral;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-grow-2 {
+    flex-grow: 2;
+}
+
+.lesson-details div {
+    padding: 1rem;
+}

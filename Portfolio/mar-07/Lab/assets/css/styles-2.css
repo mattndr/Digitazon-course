@@ -32,58 +32,58 @@ main::after {
     border: 6px solid rgb(101, 101, 252);
 }
 
-#left-section #navbar nav {
+#left-section .navbar nav {
     color: white;
     background-color: rgb(117, 220, 255);
     padding: 0.8rem;
 }
 
-#left-section #navbar nav::after {
+#left-section .navbar nav::after {
     clear: both;
     display: block;
     content: "";
 }
 
-#left-section #navbar nav .float-left {
+#left-section .navbar nav .float-left {
     margin-left: 1rem;
 }
 
-#left-section #navbar nav .float-right {
+#left-section .navbar nav .float-right {
     margin-right: 1rem;
     line-height: 80px;
 }
 
-#left-section #navbar nav .float-right img {
+#left-section .navbar nav .float-right img {
     vertical-align: middle;
 }
 
-#left-section #navbar nav img:hover {
+#left-section .navbar nav img:hover {
     cursor: pointer;
 }
 
-#left-section #news {
+#left-section .news {
     margin-top: 5rem;
     padding: 0 3rem;
 }
 
-#left-section #news article {
+#left-section .news article {
     border-radius: 10px;
     padding: 1rem;
     margin-bottom: 2rem;
 }
 
-#left-section #news article:nth-child(even) {
+#left-section .news article:nth-child(even) {
     background-color: rgb(224, 255, 253);
     border: 2px solid lightseagreen;
 
 }
 
-#left-section #news article:nth-child(odd) {
+#left-section .news article:nth-child(odd) {
     background-color: rgb(255, 230, 197);
     border: 2px solid rgb(221, 152, 25);
 }
 
-#left-section #news article:last-of-type {
+#left-section .news article:last-of-type {
     margin-bottom: 5rem;
 }
 
@@ -93,36 +93,58 @@ main::after {
     padding-top: 3rem;
 }
 
-#right-section #gallery {
+#right-section .gallery {
     margin-left: 4rem;
 }
 
-#right-section #gallery .row {
+#right-section .gallery .row {
     margin-top: 1rem;
     /* opzionale */
     width: fit-content;
 }
 
-#right-section #gallery .row::after {
+#right-section .gallery .row::after {
     clear: both;
     display: block;
     content: "";
 }
 
-#right-section #gallery .row .cell {
+#right-section .gallery .row .cell {
     background-color: lightgreen;
     margin-right: 1rem;
     font-size: 0;
+    border: 2px solid lightslategray;
 }
 
-#right-section #articles {
+#right-section .articles {
     margin-top: 4rem;
     margin-left: 4rem;
 }
 
-#right-section #articles ul li a {
+#right-section .articles ul li {
     text-decoration: none;
-    margin: 0.5rem;
+    width: fit-content;
+}
+
+#right-section .articles ul li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+}
+
+#right-section .articles ul li:nth-child(even) a:hover {
+    background-color: rgb(224, 255, 253);
+    border: 2px solid lightseagreen;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#right-section .articles ul li:nth-child(odd) a:hover {
+    background-color: rgb(255, 230, 197);
+    border: 2px solid rgb(221, 152, 25);
+    border-radius: 8px;
+    font-weight: bold;
 }
 
 #right-section footer {

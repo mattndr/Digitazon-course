@@ -1,0 +1,44 @@
+.products a[href="/melange"],
+.products a[href="/melange"]:visited {
+    color: red;
+}
+
+.products a[href="/the-one-ring"],
+.products a[href="/the-one-ring"]:visited {
+    color: gold;
+}
+
+.products a[href="/"],
+.products a[href="/"]:visited {
+    color: black;
+}
+
+/*******************************************/
+
+.movies-quotes span {
+    font-style: italic;
+}
+
+.movies-quotes span:not(span span)::before {
+    content: "«";
+}
+
+.movies-quotes span:not(span span)::after {
+    content: "»";
+}
+
+.movies-quotes span span:first-child {
+    font-weight: bold;
+}
+
+/*******************************************/
+
+input:checked+span::after {
+    content: "❤";
+}
+
+/*******************************************/
+
+button:hover {
+    visibility: hidden;
+}
