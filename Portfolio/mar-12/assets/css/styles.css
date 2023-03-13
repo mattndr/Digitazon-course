@@ -1,6 +1,6 @@
 html {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 
@@ -8,9 +8,27 @@ html {
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0 8%;
     background-color: rgb(231, 231, 231);
+    max-width: 99.75em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    margin: 0.5rem 0;
+    font-weight: normal;
+}
+
+h2 {
+    margin: 1.8rem 0 0 0;
+    font-weight: normal;
+}
+
+p {
+    line-height: 1.5rem;
 }
 
 a {
@@ -21,7 +39,10 @@ a:visited {
     color: rgb(0, 0, 238);
 }
 
-/**************************************/
+
+/****************************/
+/*          HEADER          */
+/****************************/
 
 header nav {
     display: flex;
@@ -37,10 +58,61 @@ header ul {
     display: flex;
     padding-inline-start: 0;
     list-style-type: none;
-    column-gap: 1rem;
+    column-gap: 1.2rem;
+    align-items: center;
+
 }
 
-/**************************************/
+header ul:first-child li:nth-child(2) a {
+    display: flex;
+    align-items: center;
+}
+
+header li:nth-child(2) img:last-of-type {
+    margin-top: 0.2rem;
+}
+
+/* header input[type="checkbox"] {
+    margin: 2000;
+    padding: 0;
+} */
+
+header input[type="checkbox"]:checked>.on-button-click-nav {
+    display: block;
+}
+
+.search-button {
+    display: none;
+}
+
+.search-button a {
+    color: black;
+}
+
+header input {
+    width: 18rem;
+    height: 1.8rem;
+    margin-left: 2.5rem;
+}
+
+header input:focus+.search-button {
+    display: initial;
+    padding: 0.3rem;
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    vertical-align: middle;
+}
+
+.brand-align {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.2rem;
+}
+
+/****************************/
+/*          MAIN            */
+/****************************/
+
 
 main {
     display: flex;
@@ -57,16 +129,31 @@ main {
     flex: 3;
 }
 
-.empty-column {
+.empty-right-column {
     flex: 0.5;
 }
 
+.on-button-click-nav {
+    display: none;
+}
+
+.on-button-click-nav ul {
+    background-color: rgb(243, 243, 243);
+    /* margin-right: 2rem; */
+    font-size: small;
+    padding: 1rem 0;
+}
+
+
+.on-button-click-nav ul,
 .left-side-nav ul {
     padding-inline-start: 0;
     list-style-type: none;
-    padding-left: 2rem;
+    padding-left: 1rem;
+    margin: 0 1rem 0 0.5rem;
 }
 
+.on-button-click-nav li,
 .left-side-nav li {
     padding: 0.2rem 0;
     /* font-size: small; */
@@ -74,17 +161,6 @@ main {
 
 .left-side-nav a:hover {
     text-decoration: underline;
-}
-
-/************************************/
-
-h1,
-h2 {
-    font-weight: normal;
-}
-
-h2 {
-    margin: 1.8rem 0 0 0;
 }
 
 
@@ -115,7 +191,6 @@ h2 {
 .outer-flex-container img {
     max-width: 85%;
 }
-
 
 .inner-flex-container {
     display: flex;
@@ -160,20 +235,6 @@ h2 {
     margin-top: 0.5rem;
 }
 
-/* .c1 ol {
-    max-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    column-gap: 2rem;
-    padding-inline-start: 0;
-    padding: 0 1rem;
-}
-
-.c1 ol li {
-    max-width: 50%;
-} */
-
 .references {
     display: flex;
 }
@@ -186,6 +247,7 @@ h2 {
 footer {
     background-color: #fff;
     padding: 4rem 4rem;
+    font-size: 0.9rem;
 }
 
 footer ul {
