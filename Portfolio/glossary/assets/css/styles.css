@@ -117,41 +117,76 @@ article {
 
 article pre {
     background-color: #fff;
-    width: 80%;
+    width: 90%;
 }
 
 
 /*************************************/
 
 
-.articles-links {
+.right-anchors {
     flex: 1;
     background-color: rgb(233, 233, 233);
     /* border: 1px solid black; */
     /* max-width: 25%; */
 }
 
-.articles-links ul {
+.right-anchors ul {
     margin-top: 2.5rem;
     /* margin-left: 2rem; */
     list-style-type: none;
     padding-inline-start: 0;
 }
 
-.articles-links li {
+.right-anchors li {
     /* margin-top: 0.8rem; */
     text-align: center;
+    margin: 0 1rem;
 }
 
-.articles-links a {
+.right-anchors a {
     padding: 0.5rem;
     display: inline-block;
     text-decoration: none;
     color: #272727;
 }
 
-.articles-links a:hover {
+.right-anchors a:hover {
     background-color: white;
     border-radius: 10px;
     font-weight: bold;
+}
+
+
+
+/*************************************/
+/*             HOW TO                */
+/*************************************/
+
+.wrap-content {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+#center-text .wrap-content div {
+    padding: 3rem 0;
+    margin: auto;
+    width: fit-content;
+}
+
+#remove-space-inline .wrap-content {
+    font-size: 0;
+}
+
+#remove-space-inline .wrap-content span {
+    font-size: 1rem;
+}
+
+#background-image .wrap-content div {
+    background-image: url('../images/landscape.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
 }
