@@ -1,0 +1,312 @@
+html {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+header nav {
+    padding: 0.8rem 1rem;
+    background-color: rgb(240, 255, 240);
+    border-bottom: 1px solid #000;
+}
+
+header ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+    display: flex;
+    align-items: center;
+    column-gap: 0.8rem;
+    margin: 0;
+}
+
+header>nav>ul>li,
+.music-player>ul {
+    flex: 1;
+}
+
+header a:not(.logo-image):not(.logo-name) {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    border-radius: 6px;
+    background-color: rgb(61, 61, 61);
+    border-right: 2px solid black;
+    border-bottom: 3px solid black;
+}
+
+.logo-image {
+    line-height: 1rem;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+.logo-name {
+    line-height: 1rem;
+    vertical-align: middle;
+    color: black;
+}
+
+header h1 {
+    margin: 0;
+    display: inline-block;
+}
+
+header a:hover:not(.logo-name),
+.left-menu a:hover {
+    background-color: #62e991;
+    color: #000;
+}
+
+input+button:hover {
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
+
+
+header img {
+    width: 50px;
+    margin-right: 0.5rem;
+}
+
+header input {
+    width: 85%;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+input+button {
+    padding: 0.5rem;
+    margin-left: -2rem;
+    background-color: #62e991;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.align-right {
+    margin-left: auto;
+}
+
+.music-player {
+    padding: 0 21rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000;
+}
+
+.music-player ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+    display: flex;
+    align-items: center;
+}
+
+.music-player>ul:last-child {
+    justify-content: flex-end;
+}
+
+.song-name {
+    display: flex;
+    column-gap: 0rem;
+    align-items: center;
+}
+
+.song-name h2 {
+    margin: 0;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.song-name div:first-child {
+    width: 70%;
+}
+
+.bi {
+    margin: 0 0.5rem;
+    font-size: 1.3rem;
+    color: black;
+}
+
+.bi-pause-circle-fill {
+    font-size: 3rem;
+    color: #1ed760;
+}
+
+.bi-dash-lg {
+    display: block;
+    width: 200px;
+}
+
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+svg {
+    display: inline-block;
+    margin-top: 0rem;
+}
+
+.music-timer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.music-timer small {
+    font-size: 0.7rem;
+}
+
+main>div {
+    display: flex;
+}
+
+.left-menu {
+    padding: 2rem 0;
+    flex: 1;
+    background-color: rgb(240, 255, 240);
+}
+
+.container {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-menu ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin: 1rem;
+}
+
+.left-menu li {
+    margin: 1.5rem 0;
+}
+
+.left-menu a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.artist {
+    flex: 1;
+    max-height: 500px;
+    background-image: url('https://www.dlso.it/site/wp-content/uploads/2023/02/daft-punk.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: bold;
+}
+
+.container>div {
+    flex: 1;
+    display: flex;
+}
+
+.popular {
+    flex: 2;
+    padding: 1.5rem;
+    background-color: rgb(190, 190, 190);
+}
+
+.artist>div {
+    padding: 11rem 2rem 2rem 2rem;
+}
+
+.author-name {
+    font-size: 5rem;
+    color: white;
+}
+
+.monthly-listeners {
+    margin: 1.5rem 0 1rem 0;
+    color: white;
+}
+
+.popular ul {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+.popular a {
+    text-decoration: none;
+    color: white;
+}
+
+.popular li {
+    cursor: pointer;
+}
+
+.popular ol>li {
+    padding: 1rem;
+}
+
+.popular ol>li:hover {
+    background-color: rgb(212, 212, 212);
+    color: black;
+    border-radius: 5px;
+}
+
+.popular ul li:nth-child(1) {
+    flex: 0.8;
+}
+
+.popular ul li:nth-child(4),
+.popular ul li:nth-child(5) {
+    flex: 0.8;
+    text-align: center;
+}
+
+.popular ul li:nth-child(2) {
+    flex: 4;
+    font-weight: bold;
+}
+
+.popular ul li:nth-child(3) {
+    flex: 1;
+}
+
+.popular img {
+    width: 50px;
+}
+
+.liked-songs-artist-pick {
+    flex: 0.8;
+    padding: 2rem 0 0 3rem;
+    background-color: rgb(230, 230, 230);
+}
+
+.liked-songs-artist-pick>div {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.liked-songs-artist-pick img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+.liked-songs-artist-pick h2+div {
+    margin-bottom: 5rem;
+}
