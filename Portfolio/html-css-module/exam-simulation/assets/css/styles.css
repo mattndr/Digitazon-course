@@ -184,9 +184,9 @@ main>div {
 }
 
 .left-menu {
-    padding: 2rem 0;
-    flex: 0.7;
-    background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(72, 69, 69) 78.9%);
+    padding: 1rem 0;
+    flex: 0.8;
+    background-color: #222222;
 }
 
 .container {
@@ -198,18 +198,19 @@ main>div {
 .left-menu ul {
     list-style-type: none;
     padding-inline-start: 0;
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 1.7rem;
 }
 
 .left-menu li {
-    margin: 1.5rem 0;
+    margin: 1.8rem 0;
 }
 
 .left-menu a {
     color: white;
     text-decoration: none;
-    padding: 1rem;
+    padding: 0.7rem;
     border-radius: 6px;
+    font-style: 0.9rem;
 }
 
 .left-menu i {
