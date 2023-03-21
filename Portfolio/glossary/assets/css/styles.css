@@ -48,6 +48,7 @@ nav h1 a:hover {
 nav li {
     border-radius: 20px;
     overflow: hidden;
+    box-shadow: 2px 3px black;
 }
 
 nav li:first-child {
@@ -85,6 +86,10 @@ nav li:last-child a:hover {
     color: black;
 }
 
+p,
+li {
+    line-height: 1.4rem;
+}
 
 /*********************************************/
 
@@ -117,7 +122,7 @@ article {
 
 article pre {
     background-color: #fff;
-    width: 90%;
+    width: 100%;
 }
 
 
@@ -173,6 +178,7 @@ article pre {
     padding: 3rem 0;
     margin: auto;
     width: fit-content;
+    /* oppure usa flex (jc + ai) */
 }
 
 #remove-space-inline .wrap-content {

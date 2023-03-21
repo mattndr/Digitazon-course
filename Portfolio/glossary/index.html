@@ -34,53 +34,107 @@
                 <p>An example of a semantic structure of an HTML page.</p>
                 <pre>
                     <code>
-                &lt;!DOCTYPE html&gt;
-                &lt;html&gt;
-                    &lt;head&gt;
-                        &lt;meta&gt;
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+                &lt;head&gt;
+                    &lt;meta&gt;
+                    ...
+                    &lt;meta&gt;
+                    &lt;title&gt;&lt;/title&gt;
+                    &lt;link&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;h1&gt;&lt;/h1&gt;
+                            &lt;ul&gt;
+                                &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+                                ...
+                                &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                    &lt;main&gt;
+                        &lt;section&gt;
+                            &lt;h2&gt;&lt;/h2&gt;
+                            ....
+                        &lt;/section&gt;
                         ...
-                        &lt;meta&gt;
-                        &lt;title&gt;&lt;/title&gt;
-                        &lt;link&gt;
-                    &lt;/head&gt;
-                    &lt;body&gt;
-                        &lt;header&gt;
-                            &lt;nav&gt;
-                                &lt;h1&gt;&lt;/h1&gt;
-                                &lt;ul&gt;
-                                    &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
-                                    ...
-                                    &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
-                                &lt;/ul&gt;
-                            &lt;/nav&gt;
-                        &lt;/header&gt;
-                        &lt;main&gt;
-                            &lt;section&gt;
-                                &lt;h2&gt;&lt;/h2&gt;
-                                ....
-                            &lt;/section&gt;
-                            ...
-                            &lt;section&gt;
-                                &lt;h2&gt;&lt;/h2&gt;
-                                ....
-                            &lt;/section&gt;
-                        &lt;/main&gt;
-                        &lt;footer&gt;&lt;/footer&gt;
-                    &lt;/body&gt;
-                &lt;/html&gt;
+                        &lt;section&gt;
+                            &lt;h2&gt;&lt;/h2&gt;
+                            ....
+                        &lt;/section&gt;
+                    &lt;/main&gt;
+                    &lt;footer&gt;&lt;/footer&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
                     </code>
                 </pre>
+            </article>
+            <article id="a">
+                <h2>&lt;a&gt;</h2>
+                <p>
+                    Represent a link to a web resource. It's a pointer to a url address or a specific page section.<br>
+                    Examples:
+                </p>
+                <pre><code>
+    &lt;a href="#element-id"&gt; Page section &lt;/a&gt;
+    &lt;a href="/login"&gt; Localhost url &lt;/a&gt;
+    &lt;a href="www.google.com"&gt; Google url &lt;/a&gt;
+                </code></pre>
+            </article>
+            <article id="article">
+                <h2>&lt;article&gt;</h2>
+                <p>
+                    A semantic tag that represents an independent, reusable component of a page. For example, it can be
+                    a forum post or a store article.
+                </p>
             </article>
             <article id="body">
                 <h2>&lt;body&gt;</h2>
                 <p>
-                    This tag contains the content of the page that is displayed on screen.
+                    Contains the content of the page that is displayed on screen.
                 </p>
+            </article>
+            <article id="div">
+                <h2>&lt;div&gt;</h2>
+                <p>
+                    A generic container that is useful for grouping elements and applying css rules.
+                    It's a block-level element: it has a default margin, starts on a new line and always occupies
+                    the entire available width.
+                </p>
+            </article>
+            <article id="footer">
+                <h2>&lt;footer&gt;</h2>
+                <p>
+                    Represent the section of the body that is displayed at the end of the page. It usually contains
+                    informations
+                    about the company and some navigation links.
+                </p>
+            </article>
+            <article id="form">
+                <h2>&lt;form&gt;</h2>
+                <p>
+                    A group of one or more inputs, whose values can be sent to a specific url defined in the
+                    action attribute.<br>
+                    When you want to send some user input data to a server, you need to use a form element.<br>
+                    It allows you to specify an http method (get, post, ...) to use when communicating with a
+                    server.<br>
+                    Example:
+                </p>
+                <pre><code>
+    &lt;form action="/login" method="POST"&gt;
+        &lt;input type="text" name="username"&gt;
+        &lt;input type="password" name="password"&gt;
+        &lt;input type="submit"&gt;
+    &lt;/form&gt;
+                </code></pre>
             </article>
             <article id="head">
                 <h2>&lt;head&gt;</h2>
                 <p>
-                    This tag contains the following informations:</p>
+                    Contains the following informations:
+                </p>
                 <ul>
                     <li>meta-informations,</li>
                     <li>page title,</li>
@@ -92,6 +146,48 @@
                 <h2>&lt;html&gt;</h2>
                 <p>Root element of an HTML document.</p>
             </article>
+            <article>
+                <h2>&lt;link&gt;</h2>
+                <p>
+                    Allows you to specify a CSS file for the page. There can be zero or more link tags.<br>
+                    Example:
+                </p>
+                <pre><code>
+    &lt;link rel="stylesheet" href="assets/css/styles.css"&gt;
+                </code></pre>
+            </article>
+            <article id="main">
+                <h2>&lt;main&gt;</h2>
+                <p>Represent the main content of the body, the core content. The content of this tag should not be
+                    repeated in other sections of the document.</p>
+            </article>
+            <article id="meta">
+                <h2>&lt;meta&gt;</h2>
+                <p>Used to add a meta-information to the document. It could, for example, be the description of the
+                    page
+                    that is
+                    diplayed by Search Engines, or a feature of the document.<br>Examples:</p>
+                <pre><code>
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="A glossary about HTML, CSS and some common tasks."&gt;
+                </code></pre>
+            </article>
+            <article id="style">
+                <h2>&lt;style&gt;</h2>
+                <p>Contains custom css rules to be applied to the document.<br> Example:</p>
+                <pre><code>
+    &lt;style&gt;
+        body {
+            margin: 0;
+            background-color: blue;
+        }
+    &lt;/style&gt;
+                </code></pre>
+            </article>
+            <article id="title">
+                <h2>&lt;title&gt;</h2>
+                <p>Specify the title of the document.</p>
+            </article>
         </section>
         <section class="right-anchors">
             <header>
@@ -99,16 +195,30 @@
             </header>
             <ul>
                 <li><a href="#html-page-structure"><i>HTML semantic structure</i></a></li>
+                <li><a href="#a"><i>a</i></a></li>
+                <li><a href="#article"><i>article</i></a></li>
                 <li><a href="#body"><i>body</i></a></li>
+                <li><a href="#div"><i>div</i></a></li>
                 <li><a href="#footer"><i>footer</i></a></li>
+                <li><a href="#form"><i>form</i></a></li>
+                <li><a href="#h1-h6"><i>h1-h6</i></a></li>
                 <li><a href="#head"><i>head</i></a></li>
                 <li><a href="#header"><i>header</i></a></li>
                 <li><a href="#html"><i>html</i></a></li>
+                <li><a href="#img"><i>img</i></a></li>
+                <li><a href="#input"><i>input</i></a></li>
+                <li><a href="#label"><i>label</i></a></li>
                 <li><a href="#link"><i>link</i></a></li>
                 <li><a href="#main"><i>main</i></a></li>
                 <li><a href="#meta"><i>meta</i></a></li>
+                <li><a href="#nav"><i>nav</i></a></li>
+                <li><a href="#p"><i>p</i></a></li>
+                <li><a href="#section"><i>section</i></a></li>
+                <li><a href="#span"><i>span</i></a></li>
                 <li><a href="#style"><i>style</i></a></li>
+                <li><a href="#table"><i>table</i></a></li>
                 <li><a href="#title"><i>title</i></a></li>
+                <li><a href="#ul-ol-li"><i>ul-ol-li</i></a></li>
             </ul>
         </section>
     </main>
