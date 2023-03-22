@@ -18,8 +18,8 @@ i:hover {
 }
 
 header nav {
-    padding: 0.8rem 1rem;
-    background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(176, 176, 176) 78.9%);
+    padding: 0.7rem 1rem;
+    background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93), rgb(172, 172, 172));
     border-bottom: 1px solid #000;
 }
 
@@ -35,6 +35,10 @@ header ul {
 header>nav>ul>li,
 .music-player>ul {
     flex: 1;
+}
+
+.align-middle img {
+    vertical-align: middle;
 }
 
 header a:not(.logo-image):not(.logo-name) {
@@ -76,7 +80,6 @@ input+button:hover {
     color: white;
 }
 
-
 header img {
     width: 50px;
     margin-right: 0.5rem;
@@ -90,7 +93,7 @@ header input {
 
 input+button {
     padding: 0.5rem;
-    margin-left: -2rem;
+    margin-left: -4rem;
     background-color: #1ed760;
     color: black;
     font-weight: bold;
@@ -105,7 +108,7 @@ input+button {
 .music-player {
     position: sticky;
     top: 0;
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(225, 225, 225);
     padding: 0 21rem;
     display: flex;
     justify-content: space-between;
@@ -114,7 +117,7 @@ input+button {
 }
 
 .music-player ul {
-    margin: 0.2rem 0 0.6rem 0;
+    margin: 0.3rem 0 0.4rem 0;
     font-size: 0.8rem;
     list-style-type: none;
     padding-inline-start: 0;
@@ -156,6 +159,10 @@ input+button {
     color: #1ed760;
 }
 
+.bi-pause-circle-fill:hover {
+    color: #000;
+}
+
 .bi-dash-lg {
     display: block;
     width: 200px;
@@ -180,6 +187,16 @@ svg {
     font-size: 0.7rem;
 }
 
+.music-bar line:first-child {
+    stroke: black;
+    stroke-width: 5;
+}
+
+.music-bar line:last-child {
+    stroke: rgb(189, 189, 189);
+    stroke-width: 6;
+}
+
 main>div {
     display: flex;
 }
@@ -187,7 +204,7 @@ main>div {
 .left-menu {
     padding: 1rem 0;
     flex: 0.8;
-    background-color: #222222;
+    background-color: rgba(0, 0, 0, 0.93);
 }
 
 .container {
@@ -199,28 +216,37 @@ main>div {
 .left-menu ul {
     list-style-type: none;
     padding-inline-start: 0;
-    margin: 1rem 1rem 1rem 2rem;
+}
+
+.left-menu>ul:last-child {
+    margin: 2rem 0;
 }
 
 .left-menu li {
-    margin: 1.8rem 0;
+    margin: 1rem 0 0 1rem;
+    padding: 0 0.8rem;
 }
 
 .left-menu a {
+    display: inline-block;
     color: rgb(227, 227, 227);
     text-decoration: none;
-    padding: 0.7rem;
+    padding: 0.5rem;
     border-radius: 6px;
-    font-style: 0.9rem;
+    font-weight: 600;
 }
 
 .left-menu i {
     color: white;
 }
 
+.left-menu li:hover i {
+    color: black;
+}
+
 .artist {
     flex: 1;
-    max-height: 500px;
+    max-height: 600px;
     background-image: url('https://www.dlso.it/site/wp-content/uploads/2023/02/daft-punk.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -231,16 +257,20 @@ main>div {
 .container>div {
     flex: 1;
     display: flex;
+    background: linear-gradient(100.6deg, rgba(0, 0, 0, 0.93) 10%, rgb(211, 211, 211));
 }
 
 .popular {
     flex: 2;
-    padding: 1.5rem;
-    background-color: rgb(190, 190, 190);
+    padding: 2rem 1.5rem 1.5rem 2.5rem;
+    /* background-color: rgb(120, 120, 120); */
+    /* background: linear-gradient(90deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(176, 176, 176) 78.9%); */
+    color: white;
+    border-left: 2px solid rgb(118, 118, 118);
 }
 
 .artist>div {
-    padding: 11rem 2rem 2rem 2rem;
+    padding: 14rem 2rem 2rem 2rem;
 }
 
 .author-name {
@@ -306,7 +336,7 @@ main>div {
 .liked-songs-artist-pick {
     flex: 0.8;
     padding: 2rem 0 0 3rem;
-    background-color: rgb(230, 230, 230);
+    /* background-color: rgb(120, 120, 120); */
 }
 
 .liked-songs-artist-pick>div {
