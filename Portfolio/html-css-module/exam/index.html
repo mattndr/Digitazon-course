@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="WhatsApp Messenger: più di due miliardi di persone in oltre 180 Paesi usano WhatsApp per tenersi in contatto con amici e familiari, sempre e ovunque.">
+    <title>Whatsapp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'app-green': '#25d366',
+                        'app-dark-50': '#545454',
+                        'app-dark-100': '#404040',
+                        'app-dark-200': '#272727',
+                        'app-dark-300': '#202020'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            * {
+                @apply box-border;
+            }
+
+            i {
+                @apply text-lg text-white;
+            }
+
+            i:hover {
+                @apply cursor-pointer text-app-green;
+            }
+        }
+
+        @layer components {
+            .app-nav-link {
+                @apply py-2 px-3 text-white hover:cursor-pointer hover:text-app-green flex flex-col items-center hover:bg-app-dark-200 hover:rounded-md;
+            }
+
+            .app-list-item {
+                @apply mb-3 mx-2 p-2 hover:bg-app-dark-100 hover:rounded-md hover:cursor-pointer;
+            }
+
+            .app-article {
+                @apply mt-8 px-3 py-2 rounded-lg max-w-lg w-fit bg-app-dark-100;
+            }
+        }
+      </style>
+</head>
+
+<body>
+    <header class="bg-app-dark-300 px-4 pt-1">
+        <nav class="flex justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="assets/images/whatsapp-logo.png" alt="WhatsApp logo" class="w-12">
+                <h1 class="text-2xl text-white">WhatsApp</h1>
+            </a>
+            <div class="flex items-center gap-5">
+                <a href="/chats" class="app-nav-link text-app-green border-b-4 border-app-green">
+                    <i class="bi bi-chat-text text-app-green"></i>
+                    <div class="text-lg">Chats</div>
+                </a>
+                <a href="/calls" class="app-nav-link">
+                    <i class="bi bi-telephone text-inherit"></i>
+                    <div class="text-lg">Calls</div>
+                </a>
+                <a href="/stories" class="app-nav-link">
+                    <i class="bi bi-clock-history text-inherit"></i>
+                    <div class="text-lg">Stories</div>
+                </a>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="/settings" class="app-nav-link">
+                    <i class="bi bi-gear text-inherit"></i>
+                    <div class="text-md">Settings</div>
+                </a>
+                <a href="/profile">
+                    <img src="assets/images/profile-pic.jpg" alt="Profile picture" class="rounded-full w-12 mr-1">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="flex h-full bg-[url('assets/images/background.jpg')] bg-repeat bg-auto">
+        <section class="bg-app-dark-200 basis-3/12 pt-4 flex flex-col gap-6 min-w-0 border-r border-gray-900">
+            <header class="flex flex-col gap-4 px-5">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-white text-2xl font-medium ml-1">Chats</h2>
+                    <div class="flex items-center gap-4">
+                        <i class="bi bi-pencil-square p-2 hover:bg-app-dark-100 hover:rounded-full"></i>
+                        <i class="bi bi-three-dots p-2 hover:bg-app-dark-100 hover:rounded-full"></i>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <input type="text" name="search" placeholder="Search or start a new chat"
+                        class="rounded-md bg-app-dark-50 p-1 ml-1 w-full text-white">
+                    <i class="bi bi-search relative -left-7 text-gray-400 text-md"></i>
+                </div>
+                <div class="flex gap-4 ml-2">
+                    <i class="bi bi-archive"></i>
+                    <div class="text-white">Archived</div>
+                </div>
+            </header>
+            <!-- La lista è di tipo ordered perchè i suoi elementi sono ordinati in base all'orario dell'ultimo messaggio ricevuto -->
+            <ol>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-1.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Adriano Rossi</div>
+                                <div class="self-end text-app-green">11:12 AM</div>
+                            </div>
+                            <div class="flex">
+                                <div class="truncate text-gray-400">
+                                    Lognissimos vero perferendis saepe maxime ipsum officia aliquam quaerat magni
+                                    nulla ab neque? Eos ipsam accusantium et quod.
+                                </div>
+                                <i class="bi bi-1-circle-fill text-app-green"></i>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-2.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Giuliano Turati</div>
+                                <div class="self-end">11:00 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Lognissimos vero perferendis saepe maxime ipsum officia aliquam quaerat magni
+                                nulla ab neque? Eos ipsam accusantium et quod.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-3.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Emilio Trevisan</div>
+                                <div class="self-end">09:23 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Nulla ab neque? Eos ipsam accusantium et quod oper .
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-4.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Paola Calbo</div>
+                                <div class="self-end">8:03 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Lodignissimos vero perferendis saepe maxime ipsum officia aliquam quaerat magni
+                                nulla ab neque? Eos ipsam accusantium et quod.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-5.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Gabriella Rosiello</div>
+                                <div class="self-end">08:00 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Reiciendis asperiores praesentium fuga sapiente quia soluta aspernatur? Laboriosam
+                                veritatis repellendus consequuntur, nemo beatae eius cum. Repudiandae magni nihil modi
+                                velit enim!
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-6.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Elvira Curci</div>
+                                <div class="self-end">07:53 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                nulla ab neque? Eos ipsam accusantium et quod.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-7.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Fedele Pisani</div>
+                                <div class="self-end">07:45 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Saepe maxime ipsum officia aliquam quaerat magni
+                                nulla ab neque? Eos ipsam accusantium et quod.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-8.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Diana Natta</div>
+                                <div class="self-end">07:11 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti laboriosam error
+                                culpa, dignissimos vero perferendis saepe maxime ipsum officia aliquam quaerat magni
+                                nulla ab neque? Eos ipsam accusantium et quod.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-9.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Ivo Pascarella</div>
+                                <div class="self-end">07:03 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Officia aliquam quaerat magni
+                                nulla ab neque? Eos ipsam accusantium et quod.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="app-list-item">
+                    <div class="flex items-center gap-4">
+                        <div class="shrink-0"> <img src="assets/images/image-10.jpg" alt="Nome Cognome's picture"
+                                class="rounded-full w-12">
+                        </div>
+                        <div class="flex flex-col gap-2 mr-4 truncate">
+                            <div class="flex justify-between text-white">
+                                <div>Mario Pepe</div>
+                                <div class="self-end">06:55 AM</div>
+                            </div>
+                            <div class="truncate text-gray-400">
+                                Placeat, a laborum nam hic adipisci accusantium deserunt reiciendis expedita corporis
+                                culpa totam excepturi iusto amet tempore sequi nemo doloribus possimus. Asperiores.
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+        <section class="basis-9/12 min-w-0">
+            <header class="flex items-center justify-between gap-4 px-3 py-1 border-b border-gray-900 bg-app-dark-200">
+                <div class="flex p-2 gap-3 cursor-pointer hover:bg-app-dark-300 hover:rounded-lg">
+                    <div>
+                        <img src="assets/images/digitazon.jpg" alt="Digitazon chat image" class="h-12 rounded-full">
+                    </div>
+                    <div class="flex flex-col">
+                        <h2 class="text-lg font-medium text-white">Full Stack Dev [Feb2023]</h2>
+                        <div class="text-sm font-medium text-gray-400">Andrea, Digitazon Angelica, ...</div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <i class="bi bi-camera-video p-3"></i>
+                    <i class="bi bi-telephone pl-2 py-3 pr-8 border-r border-gray-400"></i>
+                    <i class="bi bi-search relative p-3 hover:rounded-full"></i>
+                </div>
+            </header>
+            <div class="pl-[20%] pt-2">
+                <article class="app-article">
+                    <header class="flex justify-between mb-3 gap-6">
+                        <div class="text-sky-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et rem voluptatum ipsam, officia
+                        similique nemo delectus quos incidunt, modi ut quia quisquam illo aliquam nobis earum impedit
+                        accusantium voluptas eius!
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+                <article class="app-article">
+                    <header class="flex justify-between mb-3 gap-6">
+                        <div class="text-red-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <img src="assets/images/retro.jpg" alt="Retro" class="w-96">
+                    <footer class="text-end text-sm text-gray-300 relative -top-6 -left-2">9:23 AM</footer>
+                </article>
+                <article class="app-article">
+                    <header class="flex justify-between mb-3 gap-6">
+                        <div class="text-green-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Lorem ipsum dolor!
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+                <article class="app-article mt-1">
+                    <header class="flex justify-between mb-3 gap-6 hidden">
+                        <div class="text-green-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Sit amet consectetur
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+                <article class="app-article">
+                    <header class="flex justify-between mb-3 gap-6">
+                        <div class="text-sky-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Officia similique nemo delectus quos incidunt, modi ut quia quisquam
+                        illo aliquam nobis earum impedit accusantium voluptas eius.
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+                <article class="app-article">
+                    <header class="flex justify-between mb-3 gap-6">
+                        <div class="text-red-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore minima eum sit quam iure odit
+                        ut tempore alias neque, animi molestiae iste obcaecati architecto! Facere aliquid perspiciatis
+                        temporibus quibusdam architecto.
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+                <article class="app-article mt-1">
+                    <header class="flex justify-between mb-3 gap-6 hidden">
+                        <div class="text-red-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Reiciendis et animi officiis delectus ex rerum aspernatur excepturi, esse eveniet.
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+                <article class="app-article">
+                    <header class="flex justify-between mb-3 gap-6">
+                        <div class="text-green-500 font-medium">Nome Cognome</div>
+                        <div class="text-gray-400">~username</div>
+                    </header>
+                    <p class="text-gray-200">
+                        Perferendis dicta similique odit rerum.
+                    </p>
+                    <footer class="text-end text-sm text-gray-400">9:23 AM</footer>
+                </article>
+            </div>
+            <footer class="mt-6 px-3 bg-app-dark-200 flex p-2 border-t-2 border-app-dark-300 items-center">
+                <div class="flex items-center gap-4 basis-5/6">
+                    <i class="bi bi-emoji-smile p-1"></i>
+                    <i class="bi bi-paperclip p-1"></i>
+                    <input type="text" name="message" placeholder="Type a message"
+                        class="p-2 text-gray-400 bg-app-dark-100 rounded-md grow focus:outline-0 focus:text-white">
+                </div>
+                <div class="basis-1/6 flex justify-end">
+                    <i class="bi bi-mic"></i>
+                </div>
+            </footer>
+        </section>
+    </main>
+</body>
+
+</html>
