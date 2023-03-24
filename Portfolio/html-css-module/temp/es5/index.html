@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        myColor: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        /* styles for HTML elements */
+        @layer base {
+            * {
+                @apply box-border;
+            }
+
+            html,
+            body {
+                @apply h-full;
+            }
+        }
+
+        /*  put custom classes */
+        @layer components {
+            .btn {
+                color: theme('colors.myColor');
+                @apply bg-sky-200;
+            }
+
+            .card {
+                @apply p-4 h-[200px] w-[200px] bg-sky-100 rounded-lg first-of-type:bg-yellow-500;
+            }
+        }
+      </style>
+</head>
+
+<body>
+    <header class="flex items-center justify-center">
+        <input type="text" name="demo" placeholder="Search something"
+            class="w-1/2 text-sm text-slate-500 bg-gray-100 p-2 m-4 rounded-2xl hover:bg-myColor hover:placeholder:text-white peer">
+        <i class="bi bi-search relative -left-12 text-gray-400 peer-hover:text-white"></i>
+
+    </header>
+    <main>
+        <div class="app-cards flex gap-4 flex-wrap content-start justify-center pt-8">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <div
+            class="bg-[url('https://www.dlso.it/site/wp-content/uploads/2023/02/daft-punk.png')] bg-cover bg-top bg-no-repeat mt-8 h-[480px] flex flex-col gap-4 p-12">
+            <h1 class="text-8xl font-bold text-slate-50 mt-auto">DAFT PUNK</h1>
+            <h1 class="">DAFT PUNK 2</h1>
+            <h1 class="">DAFT PUNK 3</h1>
+        </div>
+
+        <div
+            class="bg-[url('https://www.dlso.it/site/wp-content/uploads/2023/02/daft-punk.png')] bg-cover bg-top bg-no-repeat mt-8 h-[480px] flex flex-col justify-end gap-4 p-12">
+            <h1 class="text-8xl font-bold text-slate-50">DAFT PUNK</h1>
+            <h1 class="">DAFT PUNK 2</h1>
+            <h1 class="">DAFT PUNK 3</h1>
+        </div>
+    </main>
+    <footer>
+    </footer>
+
+</body>
+
+</html>

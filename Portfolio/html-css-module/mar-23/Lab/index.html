@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="flex flex-col pt-4 px-4 bg-[#202124]">
+        <div class="flex items-center gap-4">
+            <div class="basis-3/12">
+                <img class="max-w-[120px]"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Google-News_logo.png/800px-Google-News_logo.png"
+                    alt="Google News logo">
+            </div>
+            <div class="flex grow basis-6/12 gap-4">
+                <input type="text" placeholder="Cerca argomenti, località e fonti"
+                    class="p-3 rounded-lg w-full bg-[#292a2d]">
+            </div>
+            <div class="flex basis-3/12 justify-between items-center">
+                <div class="flex gap-4">
+                    <i class="bi bi-question-circle"></i>
+                    <i class="bi bi-gear"></i>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <i class=" bi bi-grid-3x3-gap-fill"></i>
+                    <img src="https://lh3.google.com/u/0/ogw/AAEL6sgEzSeHtlNI-8tEIhmuOu-Mw21GqOKqMsXk60m9=s32-c-mo"
+                        alt="Google account image" class="rounded-full">
+                </div>
+            </div>
+        </div>
+        <div class="mt-8">
+            <ul class="flex gap-8 mx-4 text-white justify-center items-center">
+                <li class="text-[#6da4da] border-b-4 border-[#6da4da]">Home page</li>
+                <li>Per te</li>
+                <li>Stai seguendo</li>
+                <li class="border-r pr-8">News Showcase</li>
+                <li>Italia</li>
+                <li>Dal mondo</li>
+                <li>Notizie locali</li>
+                <li>Affari</li>
+                <li>Scienza e tecnologia</li>
+                <li>Intrattenimento</li>
+                <li>Sport</li>
+                <li>Salute</li>
+            </ul>
+        </div>
+    </header>
+    <main class="flex flex-col bg-[#292a2d] pt-10 px-[20%]">
+        <div class="flex items-center">
+            <i class="bi bi-info-circle text-[#6da4da] mr-2"></i>
+            <div class="font-bold text-[#6da4da]">
+                Modalità di
+                classificazione di
+                questi
+                articoli
+            </div>
+        </div>
+        <div class="flex justify-between items-center">
+            <div class="flex flex-col gap-2">
+                <h1 class="text-white text-3xl">Le tue notizie</h1>
+                <div class="text-gray-400">giovedì 23 marzo</div>
+            </div>
+            <div class="flex gap-2 rounded-2xl bg-[#202124] p-4 items-center">
+                <i class="bi bi-chevron-left"></i>
+                <i class="bi bi-sun-fill"></i>
+                <div class="flex flex-col">
+                    <div class="text-gray-400">Lombardia</div>
+                    <div class="text-white text-2xl">19° C</div>
+                    <div class="text-sky-400">weather.com</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-4 mt-8 basis-2/3">
+            <section class="basis-4/6 p-2 gap-2 bg-[#202124] rounded-xl">
+                <div class="flex items-center pb-2 mx-4 mt-2 border-b-2 gap-1 border-gray-600">
+                    <h2 class="text-[#6da4da] text-2xl">Notizie principali</h2>
+                    <i class="bi bi-chevron-right text-[#6da4da]"></i>
+                </div>
+                <div class="flex gap-4 border-b-2 border-gray-600 my-3 mx-2">
+                    <article class="flex flex-col gap-2 basis-2/5 my-4 mx-2">
+                        <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                            alt="Sciopero francia" class="rounded-lg">
+                        <div class="text-gray-400">Sky Tg24</div>
+                        <header class="text-white text-xl">Sciopero in Francia contro riforma pensioni, manifestazioni e
+                            stop ai...
+                        </header>
+                        <div class="text-gray-400">1 ora fa</div>
+                    </article>
+                    <div class="flex flex-col gap-5 basis-3/5 my-2 mr-2">
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <div class="self-end text-gray-400 py-1 px-4 mr-2 mb-2 rounded-xl bg-[#292a2d]">Copertura
+                            completa
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4 border-b-2 border-gray-600 my-3 mx-2">
+                    <article class="flex flex-col gap-2 basis-2/5 my-4 mx-2">
+                        <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                            alt="Sciopero francia" class="rounded-lg">
+                        <div class="text-gray-400">Sky Tg24</div>
+                        <header class="text-white text-xl">Sciopero in Francia contro riforma pensioni, manifestazioni e
+                            stop ai...
+                        </header>
+                        <div class="text-gray-400">1 ora fa</div>
+                    </article>
+                    <div class="flex flex-col gap-5 basis-3/5 my-2 mr-2">
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <div class="self-end text-gray-400 py-1 px-4 mr-2 mb-2 rounded-xl bg-[#292a2d]">Copertura
+                            completa
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4 border-b-2 border-gray-600 my-3 mx-2">
+                    <article class="flex flex-col gap-2 basis-2/5 my-4 mx-2">
+                        <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                            alt="Sciopero francia" class="rounded-lg">
+                        <div class="text-gray-400">Sky Tg24</div>
+                        <header class="text-white text-xl">Sciopero in Francia contro riforma pensioni, manifestazioni e
+                            stop ai...
+                        </header>
+                        <div class="text-gray-400">1 ora fa</div>
+                    </article>
+                    <div class="flex flex-col gap-5 basis-3/5 my-2 mr-2">
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <article class="flex flex-col gap-2 basis-1/3">
+                            <div class="text-gray-300">Agenzia ANSA</div>
+                            <header class="text-gray-300">Macron:'La riforma delle pensioni va avanti nell'interesse
+                                della nazione' - Europa
+                            </header>
+                            <div class="text-gray-400">3 ore fa</div>
+                        </article>
+                        <div class="self-end text-gray-400 py-1 px-4 mr-2 mb-2 rounded-xl bg-[#292a2d]">Copertura
+                            completa
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="flex flex-col gap-4 basis-1/3">
+                <section class="flex flex-col p-2 gap-2 bg-[#202124] px-4 rounded-xl">
+                    <div class="flex items-center pb-2 mt-2 border-b-2 gap-1 border-gray-600">
+                        <h2 class="text-[#59b2ae] text-2xl">Notizie locali</h2>
+                        <i class="bi bi-chevron-right text-[#59b2ae]"></i>
+                    </div>
+                    <article class="flex flex-col gap-2 border-b-2 border-gray-600">
+                        <div class="flex justify-between gap-4">
+                            <div class="basis-3/4 flex flex-col gap-2">
+                                <div class="text-gray-300">Leggo</div>
+                                <header class="text-gray-300 text-lg">Macron:'La riforma delle pensioni va avanti
+                                    nell'interesse
+                                    della nazione' - Europa
+                                </header>
+                            </div>
+                            <div class="basis-1/4 self-center">
+                                <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                                    alt="Sciopero" class="rounded-xl">
+                            </div>
+                        </div>
+                        <div class="text-gray-400 mb-2">3 ore fa</div>
+                    </article>
+                    <article class="flex flex-col gap-2 border-b-2 border-gray-600">
+                        <div class="flex justify-between gap-4">
+                            <div class="basis-3/4 flex flex-col gap-2">
+                                <div class="text-gray-300">Leggo</div>
+                                <header class="text-gray-300 text-lg">Macron:'La riforma delle pensioni va avanti
+                                    nell'interesse
+                                    della nazione' - Europa
+                                </header>
+                            </div>
+                            <div class="basis-1/4 self-center">
+                                <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                                    alt="Sciopero" class="rounded-xl">
+                            </div>
+                        </div>
+                        <div class="text-gray-400 mb-2">3 ore fa</div>
+                    </article>
+                    <article class="flex flex-col gap-2">
+                        <div class="flex justify-between gap-4">
+                            <div class="basis-3/4 flex flex-col gap-2">
+                                <div class="text-gray-300">Leggo</div>
+                                <header class="text-gray-300 text-lg">Macron:'La riforma delle pensioni va avanti
+                                    nell'interesse
+                                    della nazione' - Europa
+                                </header>
+                            </div>
+                            <div class="basis-1/4 self-center">
+                                <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                                    alt="Sciopero" class="rounded-xl">
+                            </div>
+                        </div>
+                        <div class="text-gray-400 mb-2">3 ore fa</div>
+                    </article>
+                </section>
+                <section class="flex flex-col p-2 gap-2 bg-[#202124] px-4 rounded-xl">
+                    <div class="flex pb-2 mt-2 border-b-2 border-gray-600">
+                        <h2 class="text-[#7e719d] text-2xl">Scelti per te</h2>
+                    </div>
+                    <article class="flex flex-col gap-2 border-b-2 border-gray-600">
+                        <div class="flex justify-between gap-4">
+                            <div class="basis-3/4 flex flex-col gap-2">
+                                <div class="text-gray-300">Leggo</div>
+                                <header class="text-gray-300 text-lg">Macron:'La riforma delle pensioni va avanti
+                                    nell'interesse
+                                    della nazione' - Europa
+                                </header>
+                            </div>
+                            <div class="basis-1/4 self-center">
+                                <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                                    alt="Sciopero" class="rounded-xl">
+                            </div>
+                        </div>
+                        <div class="text-gray-400 mb-2">3 ore fa</div>
+                    </article>
+                    <article class="flex flex-col gap-2 border-b-2 border-gray-600">
+                        <div class="flex justify-between gap-4">
+                            <div class="basis-3/4 flex flex-col gap-2">
+                                <div class="text-gray-300">Leggo</div>
+                                <header class="text-gray-300 text-lg">Macron:'La riforma delle pensioni va avanti
+                                    nell'interesse
+                                    della nazione' - Europa
+                                </header>
+                            </div>
+                            <div class="basis-1/4 self-center">
+                                <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                                    alt="Sciopero" class="rounded-xl">
+                            </div>
+                        </div>
+                        <div class="text-gray-400 mb-2">3 ore fa</div>
+                    </article>
+                    <article class="flex flex-col gap-2">
+                        <div class="flex justify-between gap-4">
+                            <div class="basis-3/4 flex flex-col gap-2">
+                                <div class="text-gray-300">Leggo</div>
+                                <header class="text-gray-300 text-lg">Macron:'La riforma delle pensioni va avanti
+                                    nell'interesse
+                                    della nazione' - Europa
+                                </header>
+                            </div>
+                            <div class="basis-1/4 self-center">
+                                <img src="https://static.sky.it/images/skytg24/it/mondo/2023/03/23/sciopero-francia-riforma-pensioni-oggi/francia_proteste_ansa1.jpg.transform/hero-mobile/51579b5d3dca9d1cb28acd97aebf272b4a616e47/img.jpg"
+                                    alt="Sciopero" class="rounded-xl">
+                            </div>
+                        </div>
+                        <div class="text-gray-400 mb-2">3 ore fa</div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
