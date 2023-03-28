@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ex1
+        // Trovare la stringa più lunga tra due stringhe salvate in due variabili e stamparla in output con l'aggiunta del messaggio 'la stringa più lunga è: '
+
+        const stringa1 = 'digitazon';
+        const stringa2 = 'web';
+        const output1 = 'La stringa più lunga è: ';
+        const output2 = 'Le due stringhe hanno la stessa lunghezza';
+        let outputFinale;
+
+        if (stringa1.length > stringa2.length) {
+            outputFinale = output1 + stringa1;
+        }
+        else if (stringa1.length < stringa2.length) {
+            outputFinale = output1 + stringa2;
+        }
+        else {
+            outputFinale = output2;
+        }
+
+        console.log(outputFinale);
+
+    </script>
+
+    <script>
+        // ex2
+        // Creare una variabile stringa con valore a piacere e stampare i suoi caratteri invertiti separati da -, su un'unica riga
+
+        const stringa = 'web';
+        const separatore = '-';
+
+        console.log(
+            stringa.charAt(2) + separatore +
+            stringa.charAt(1) + separatore +
+            stringa.charAt(0));
+
+    </script>
+
+    <script>
+        // ex3
+        // Creare due variabili x e y con valori a piacere.
+        // se x è minore o uguale a y, stampa green.
+        // in quel contesto se y è uguale a zero, stampa red.
+        // se è maggiore di y, stampa blue
+
+        const x = 0;
+        const y = 0;
+
+        if (x <= y) {
+            console.log('green');
+
+            if (y == 0) {
+                console.log('red');
+            }
+        } else {
+            console.log('blue');
+        }
+
+    </script>
+
+    <script>
+        // ex4
+        // Date due variabili con valori 'kiwi' e 'banana', stampa in output 
+        // il seguente risultato (la prima e la terza lettere della prima stringa 
+        // concatenata ad un underscore e alla seconda stringa maiuscola)
+
+        const string1 = 'kiwi';
+        const string2 = 'banana';
+
+        console.log(string1.charAt(0) + string1.charAt(2) + '_' + string2.toUpperCase());
+
+    </script>
+
+    <script>
+        // ex 5
+        // Crea un complesso di controlli condizionali a piacere per stampare in output un risultato, a patto di utilizzare:
+        // almeno un else-if, almeno un if innestato, almeno una comparazione per valore di stringa
+
+        const num1 = 10;
+        const num2 = 0;
+        const operazione = 'divisione';
+
+        if (operazione == 'divisione') {
+            if (num2 == 0) {
+                console.log('Il divisore deve essere diverso da 0');
+            }
+            else {
+                console.log(num1 + ' / ' + num2 + ' = ' + (num1 / num2));
+            }
+        }
+        else if (operazione == 'moltiplicazione') {
+            console.log(num1 + ' * ' + num2 + ' = ' + (num1 * num2));
+        }
+        else if (operazione == 'somma') {
+            console.log(num1 + ' + ' + num2 + ' = ' + (num1 + num2));
+        }
+        else if (operazione == 'divisione') {
+            console.log(num1 + ' - ' + num2 + ' = ' + (num1 - num2));
+        }
+        else {
+            console.log('Specificare un\'operazione valida');
+        }
+
+    </script>
+</body>
+
+</html>
