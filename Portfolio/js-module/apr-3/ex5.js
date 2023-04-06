@@ -22,7 +22,5 @@ if (matrix) {
             sum += matrix[i][j];
         }
         console.log("Media: " + sum / matrix[i].length);
-
     }
-
 }
