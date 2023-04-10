@@ -248,15 +248,16 @@ function parseStrings(arr) {
     let counter = 0;
     for (let i = 0; i < arr.length; i++) {
         const currentText = arr[i].text;
-        let xFounded = false;
+        let containsX = false;
         for (let j = 0; j < currentText.length; j++) {
-            if (!xFounded && currentText[j] == 'x') {
-                xFounded = true;
+            if (!containsX && currentText[j] == 'x') {
+                containsX = true;
+                console.log(currentText);
                 counter++;
             }
         }
     }
-    console.log(counter);
+    console.log('Ci sono ' + counter + ' stringhe che contengono la lettera x');
 }
 
 parseStrings(array);
