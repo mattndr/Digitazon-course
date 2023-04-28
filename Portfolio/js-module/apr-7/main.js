@@ -287,7 +287,7 @@ console.log('----------');
 
 
 
-// rimuovere dal Set tutti gli elementi dell'array che sono già presneti nel Set, ed aggiungere gli elementi dell'array se non sono già presenti nel Set
+// rimuovere dal Set tutti gli elementi dell'array che sono già presenti nel Set, ed aggiungere gli elementi dell'array se non sono già presenti nel Set
 
 let set = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
@@ -335,7 +335,7 @@ console.log('----------');
 // creare due array di oggetti che rappresentano le varie versioni di JavaScript e CSS rilasciate finora, ed un metodo che stampa tali informazioni
 
 
-function printInfo(language) {
+function printInfo() {
     console.log(`${this.name} has been released in ${this.year}`);
 }
 
@@ -353,5 +353,5 @@ const cssReleases = [
     { name: 'CSS3', year: 1999, printFullInfo: printInfo }
 ]
 
-jsReleases.forEach(function (el) { el.printFullInfo('JavaScript') });
-cssReleases.forEach(function (el) { el.printFullInfo('CSS') });
+jsReleases.forEach(function (el) { el.printFullInfo() });
+cssReleases.forEach(function (el) { el.printFullInfo() });
