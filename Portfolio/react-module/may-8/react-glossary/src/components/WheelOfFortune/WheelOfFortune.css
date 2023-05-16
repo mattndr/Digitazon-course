@@ -1,0 +1,62 @@
+.wheel .content {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+
+.wheel .history {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.wheel .spin {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-basis: 40%;
+}
+
+.wheel .cell {
+    padding: 1rem;
+    opacity: 0.6;
+}
+
+.wheel .selected {
+    border: 4px solid;
+    opacity: 1;
+}
+
+/*
+.wheel .red {
+    background-color: red;
+}
+
+.wheel .orange {
+    background-color: orange;
+}
+
+.wheel .yellow {
+    background-color: yellow;
+}
+
+.wheel .green {
+    background-color: greenyellow;
+}
+
+.wheel .lightblue {
+    background-color: lightblue;
+}
+
+.wheel .blue {
+    background-color: blue;
+}
+
+.wheel .purple {
+    background-color: purple;
+}
+
+.wheel .pink {
+    background-color: pink;
+} */

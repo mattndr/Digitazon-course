@@ -1,0 +1,28 @@
+.Excel {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.Excel h1 {
+    margin-bottom: 0;
+}
+
+.Excel>div>input {
+    width: 50px;
+    margin: auto;
+}
+
+.Excel .row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.Excel .cells {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 0.2rem;
+    row-gap: 0.5rem
+}

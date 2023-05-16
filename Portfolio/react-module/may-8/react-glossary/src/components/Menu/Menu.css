@@ -1,0 +1,22 @@
+.navMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+    background-color: rgb(192, 192, 192);
+    flex-basis: 20%;
+    height: auto;
+    padding-top: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0.3rem;
+    color: black
+}
+
+a:hover {
+    color: white;
+    background-color: #343434;
+}

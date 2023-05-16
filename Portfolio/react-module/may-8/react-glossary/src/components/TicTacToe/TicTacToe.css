@@ -1,0 +1,13 @@
+.TicTacToe {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.TicTacToe .cell {
+    flex-basis: 30%;
+    border: 1px solid;
+    padding: 4rem;
+    font-size: 1rem;
+}

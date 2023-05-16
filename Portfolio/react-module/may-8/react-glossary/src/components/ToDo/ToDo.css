@@ -1,0 +1,22 @@
+ol {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+
+.todo ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+.list-element {
+    display: flex;
+    gap: 1rem;
+}
+
+.opacque {
+    opacity: 0.5;
+    order: 1;
+}

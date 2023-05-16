@@ -1,0 +1,10 @@
+.Comment {
+    display: flex;
+}
+
+.Comment p {
+    flex-basis: 80%;
+    border: 1px solid;
+    padding: 0.5rem;
+    margin: 0 0 0 auto;
+}
