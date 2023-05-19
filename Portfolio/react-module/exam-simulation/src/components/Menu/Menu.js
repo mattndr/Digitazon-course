@@ -6,7 +6,7 @@ import Search from '../Search/Search';
 import MenuLink from '../MenuLink/MenuLink';
 
 export default function Menu() {
-  const [postLinks, setPostLinks] = useState(null);
+  const [postLinks, setPostLinks] = useState();
   let { postId } = useParams();
   const navigate = useNavigate();
 

@@ -7,7 +7,6 @@ export default function Search({ posts }) {
   const [runSearch, setRunSearch] = useState();
   const navigate = useNavigate();
 
-  useEffect(() => {}, [posts]);
   useEffect(() => {
     if (!textToSearch) return;
     const post = posts.find((post) => post.body.includes(textToSearch));

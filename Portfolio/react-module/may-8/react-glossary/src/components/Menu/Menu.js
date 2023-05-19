@@ -17,6 +17,7 @@ export default function Menu() {
       <a href="/posts">Posts</a>
       <a href="/movingbutton">Moving Button</a>
       <a href="/forum">Forum</a>
+      <a href="/gpt-youtube">Gpt with Youtube</a>
     </div>
   );
 }

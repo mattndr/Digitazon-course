@@ -19,6 +19,7 @@ import ToDo from './components/ToDo/ToDo';
 import InputTextCheck from './components/InputTextCheck/InputTextCheck';
 import MovingButton from './components/MovingButton/MovingButton';
 import Post from './components/Forum/Forum';
+import GptWithYoutube from './components/GptWithYoutube/GptWithYoutube';
 
 // Create a Browser Router and configure the first route.
 const router = createBrowserRouter([
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: 'forum',
         element: <Post />,
+      },
+      {
+        path: 'gpt-youtube',
+        element: <GptWithYoutube />,
       },
     ],
   },

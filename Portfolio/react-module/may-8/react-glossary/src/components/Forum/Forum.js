@@ -11,13 +11,16 @@ export default function Post({ id = 1 }) {
 
   useEffect(() => {
     async function getPostWithComments() {
-      let result = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+      let result = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${id}`
+      );
       const post = await result.json();
       result = await fetch(
         `https://jsonplaceholder.typicode.com/posts/${id}/comments`
       );
       const comments = await result.json();
       setPostWithComments({ post, comments });
+      console.log({ post, comments });
     }
     getPostWithComments();
   }, [id]);
