@@ -42,7 +42,15 @@ export default function Cart({ cart, setCart }) {
                 </tbody>
               </table>
             </div>
-            <button className="block bg-lime-500 py-2 px-4 mx-auto rounded-lg mt-10 hover:bg-lime-400 font-bold shadow-md">
+            <div className="mt-8 block bg-gray-200 text-center py-2 mx-2 mx-auto ">
+              <span className="mr-2">Total:</span>{' '}
+              {cart.reduce(
+                (total, current) => total + current.price * current.quantity,
+                0
+              )}
+              €
+            </div>
+            <button className="block bg-lime-500 py-2 px-4 mx-auto rounded-lg mt-6 hover:bg-lime-400 font-bold shadow-md">
               CHECKOUT
             </button>
           </>

@@ -1,10 +1,12 @@
 import {
   BrowserRouter,
   Link,
+  Navigate,
   Outlet,
   Route,
   Routes,
   useNavigate,
+  useParams,
 } from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
@@ -14,8 +16,10 @@ import { ShoppingCartIcon, UserIcon } from '@heroicons/react/24/solid';
 
 function Main({ cart }) {
   const navigate = useNavigate();
+  const { category } = useParams();
   const [categories, setCategories] = useState([]);
   const [searchContent, setSearchContent] = useState('');
+  const [selectedCat, setSelectedCat] = useState(category || '');
 
   useEffect(() => {
     (async function getCategories() {
@@ -27,9 +31,9 @@ function Main({ cart }) {
 
   return (
     <>
-      <header className="flex justify-between items-center gap-8 py-4 px-8 bg-gray-100">
+      <header className="flex justify-between items-center gap-8 py-4 px-8 bg-gray-200">
         <h1
-          className="text-2xl font-bold bg-lime-500 p-2 cursor-pointer"
+          className="text-2xl font-bold bg-lime-500 py-2 px-4 cursor-pointer"
           onClick={() => navigate('')}
         >
           My Store
@@ -37,15 +41,16 @@ function Main({ cart }) {
         <div className="flex basis-[30%]">
           <input
             placeholder="Search a product"
-            className="border-2 p-1 rounded-lg rounded-r-none border-r-0 w-full"
+            className="border-2 border-gray-300 p-1 rounded-lg rounded-r-none border-r-0 w-full placeholder:pl-3"
             value={searchContent}
             onChange={(e) => setSearchContent(e.target.value)}
           ></input>
           <button
-            className="border-3 rounded-lg py-1 px-2 rounded-l-none border-l-0 text-gray-100 bg-gray-700 hover:bg-gray-600 hover:text-gray-50"
+            className="border-3 rounded-lg py-1 px-2 rounded-l-none border-l-0 text-white bg-gray-700 hover:bg-gray-600"
             onClick={() => {
               if (!searchContent) return;
               setSearchContent('');
+              setSelectedCat('');
               navigate(`products/search/${searchContent}`);
             }}
           >
@@ -55,7 +60,10 @@ function Main({ cart }) {
         <div className="flex gap-4">
           <button
             className="flex gap-2 items-center rounded-lg py-1.5 px-3 bg-lime-500 hover:bg-lime-400 shadow-md"
-            onClick={() => navigate('cart')}
+            onClick={() => {
+              setSelectedCat('');
+              navigate('cart');
+            }}
           >
             <ShoppingCartIcon className="h-6 w-6"></ShoppingCartIcon>
             <span>
@@ -70,7 +78,7 @@ function Main({ cart }) {
           </button>
         </div>
       </header>
-      <main className="flex py-10 justify-evenly">
+      <main className="flex py-14 justify-evenly">
         <nav className="basis-[18%] border-r-4">
           <h2 className="text-xl font-bold mb-8 mx-[8%]">Categories</h2>
           <ul className="flex flex-col gap-1">
@@ -78,7 +86,10 @@ function Main({ cart }) {
               <li key={i}>
                 <Link
                   to={`products/category/${cat}`}
-                  className="pl-[8%] mr-[10%] block rounded-lg hover:bg-lime-500 hover:font-bold"
+                  className={`pl-[8%] mr-[15%] block rounded-lg hover:bg-lime-500 hover:font-bold ${
+                    selectedCat === cat ? ' bg-gray-200' : ''
+                  }`}
+                  onClick={() => setSelectedCat(cat)}
                 >
                   {cat}
                 </Link>
@@ -100,7 +111,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main cart={cart} />}>
-          {/* <Route index element={<Es1 />}></Route> */}
           <Route path="products">
             <Route
               path="category/:category"
@@ -115,6 +125,10 @@ function App() {
             path="cart"
             element={<Cart cart={cart} setCart={setCart} />}
           ></Route>
+          <Route
+            index
+            element={<Navigate to="products/category/smartphones" />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
