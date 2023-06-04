@@ -1,0 +1,9 @@
+{
+  "1": {
+    "wordToGuess": "monetized",
+    "chosenLetters": "",
+    "lastChosenLetter": "",
+    "remainingGuessAttempts": 6,
+    "sessionStatus": "Game running"
+  }
+}

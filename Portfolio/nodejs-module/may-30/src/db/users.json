@@ -1,0 +1,17 @@
+{
+  "1": {
+    "name": "Mario",
+    "lastName": "Rossi",
+    "deleted": false
+  },
+  "2": {
+    "name": "Luigi",
+    "lastName": "Verdi",
+    "deleted": false
+  },
+  "3": {
+    "name": "Anna",
+    "lastName": "Bianchi",
+    "deleted": false
+  }
+}

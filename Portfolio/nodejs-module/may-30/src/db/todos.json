@@ -1,0 +1,14 @@
+{
+  "1": {
+    "task": "Book flight",
+    "deleted": false
+  },
+  "2": {
+    "task": "Meet with my friends",
+    "deleted": false
+  },
+  "3": {
+    "task": "Go to the gym",
+    "deleted": false
+  }
+}

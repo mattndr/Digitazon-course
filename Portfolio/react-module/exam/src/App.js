@@ -125,11 +125,11 @@ function App() {
             path="cart"
             element={<Cart cart={cart} setCart={setCart} />}
           ></Route>
-          <Route
-            index
-            element={<Navigate to="products/category/smartphones" />}
-          />
         </Route>
+        <Route
+          index
+          element={<Navigate to="products/category/smartphones" />}
+        />
       </Routes>
     </BrowserRouter>
   );
