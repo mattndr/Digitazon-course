@@ -2,6 +2,8 @@ import otherGroups from '../../db/groups.json' assert { type: 'json' };
 import axios from 'axios';
 
 const targetGroup = process.argv[2];
+const defaultWaitTime = 500;
+let waitTime = 500;
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -26,10 +28,14 @@ async function call() {
           (error.response && error.response.status != '404')
         ) {
           counter--;
-          await wait(5000);
+          if (error.response && error.response.status == '429') {
+            waitTime *= 2;
+          }
+          await wait(waitTime);
           continue;
         }
-        await wait(500);
+        waitTime = defaultWaitTime;
+        await wait(waitTime);
       }
     }
   }
