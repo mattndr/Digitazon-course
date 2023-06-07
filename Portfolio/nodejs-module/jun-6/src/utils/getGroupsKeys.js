@@ -15,6 +15,14 @@ async function call() {
   } else {
     for (let counter = 0; counter <= 9999; counter++) {
       const key = counter.toString().padStart(4, '0');
+      /*
+      // questa soluzione mi consente di evitare di usare try-catch ma devo gestire con degli if-else gli statusCode delle risposte
+      // validateStatus -> se faccio ritornare sempre true allora tutti gli status code sono accettati (cioè non si generano eccezioni in caso di 4xx,5xx)
+      const result = await axios.get(targetGroup, {
+        validateStatus: () => true
+          headers: { key },
+        });
+      */
       try {
         await axios.get(targetGroup, {
           headers: { key },

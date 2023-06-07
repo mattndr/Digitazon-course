@@ -1,9 +1,12 @@
 import express from 'express';
-import ngrok from 'ngrok';
 import * as student from './students-routes.mjs';
+import cors from 'cors';
+
 const app = express();
-const port = 3000;
+const port = 3333;
+
 app.use(express.json());
+app.use(cors());
 
 const secretKEy = '0020';
 
