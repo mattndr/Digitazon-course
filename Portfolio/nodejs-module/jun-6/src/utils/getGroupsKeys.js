@@ -13,7 +13,6 @@ async function call() {
   } else {
     for (let counter = 0; counter <= 9999; counter++) {
       const key = counter.toString().padStart(4, '0');
-      console.log(key);
       try {
         await axios.get(targetGroup, {
           headers: { key },
@@ -21,8 +20,16 @@ async function call() {
         console.log('Key found:', key);
         return;
       } catch (error) {
-        if (error.response && error.response.status != '404') counter--;
-        await wait(5000);
+        console.log('key', key + ':', error.message);
+        if (
+          !error.response ||
+          (error.response && error.response.status != '404')
+        ) {
+          counter--;
+          await wait(5000);
+          continue;
+        }
+        await wait(500);
       }
     }
   }
