@@ -11,7 +11,7 @@ async function call() {
   if (!otherGroups[targetGroup]) {
     console.log(`Group '${targetGroup}' doesn't exist`);
   } else {
-    for (let counter = 0; counter < 9999; counter++) {
+    for (let counter = 0; counter <= 9999; counter++) {
       const key = counter.toString().padStart(4, '0');
       console.log(key);
       try {
