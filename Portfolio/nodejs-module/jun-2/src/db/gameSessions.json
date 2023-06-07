@@ -1,6 +1,39 @@
 {
-  "1": {
-    "wordToGuess": "monetized",
+  "11": {
+    "userId": 5,
+    "wordToGuess": "covertness",
+    "chosenLetters": "",
+    "lastChosenLetter": "",
+    "remainingGuessAttempts": 6,
+    "sessionStatus": "Game abandoned"
+  },
+  "12": {
+    "userId": 6,
+    "wordToGuess": "ecstatically",
+    "chosenLetters": "",
+    "lastChosenLetter": "",
+    "remainingGuessAttempts": 6,
+    "sessionStatus": "Game abandoned"
+  },
+  "13": {
+    "userId": 6,
+    "wordToGuess": "tragacanth",
+    "chosenLetters": "",
+    "lastChosenLetter": "",
+    "remainingGuessAttempts": 6,
+    "sessionStatus": "Game abandoned"
+  },
+  "14": {
+    "userId": 6,
+    "wordToGuess": "underwhelmed",
+    "chosenLetters": "",
+    "lastChosenLetter": "",
+    "remainingGuessAttempts": 6,
+    "sessionStatus": "Game abandoned"
+  },
+  "15": {
+    "userId": 6,
+    "wordToGuess": "maxis",
     "chosenLetters": "",
     "lastChosenLetter": "",
     "remainingGuessAttempts": 6,

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Matteo",
+    "lastname": "Andreoni",
+    "secret": "Hello world!"
+  },
+  {
+    "name": "Osvaldo",
+    "lastname": "Roscani",
+    "secret": "!B modular"
+  },
+  {
+    "name": "Gianmarco",
+    "lastname": "Vinzon",
+    "secret": "Dar!ius"
+  },
+  {
+    "name": "Siegfred",
+    "lastname": "Feranil",
+    "secret": "_!1235è"
+  }
+]

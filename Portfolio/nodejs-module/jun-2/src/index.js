@@ -1,5 +1,5 @@
 import express from 'express';
-import cookieSession from 'cookie-session';
+import session from "express-session";
 
 import {
   createGameSession,
@@ -13,7 +13,7 @@ app.use(express.json());
 const port = 3000;
 
 app.use(
-  cookieSession({
+  session({
     name: 'session',
     keys: ['mySecretKey'],
   })

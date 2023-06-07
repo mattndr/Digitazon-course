@@ -1,0 +1,11 @@
+{
+  "http://localhost:3000/digitazon/2023/02/group/1/students": {
+    "key": "0020"
+  },
+  "http://localhost:3000/digitazon/2023/02/group/2/students": {
+    "key": "0020"
+  },
+  "http://localhost:3000/digitazon/2023/02/group/3/students": {
+    "key": "0020"
+  }
+}

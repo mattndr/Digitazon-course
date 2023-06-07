@@ -1,0 +1,9 @@
+{
+  "MarioRossi": {
+    "wordToGuess": "parturitions",
+    "chosenLetters": "parturitions",
+    "lastChosenLetter": "s",
+    "remainingGuessAttempts": 5,
+    "gameStatus": "won"
+  }
+}
