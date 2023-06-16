@@ -1,7 +1,7 @@
 {
-  "name": "jun-6",
+  "name": "exam",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js exam",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,15 +9,14 @@
     "dev": "nodemon -w src src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Matteo Andreoni",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^1.4.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2"
-  },
   "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "moment": "^2.29.4"
   }
 }

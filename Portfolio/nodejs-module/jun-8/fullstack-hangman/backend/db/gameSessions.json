@@ -1,0 +1,459 @@
+{
+  "1": {
+    "wordToGuess": "elettrico",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "2": {
+    "wordToGuess": "deserto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "3": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "4": {
+    "wordToGuess": "camicia",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "5": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "6": {
+    "wordToGuess": "elettrico",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "7": {
+    "wordToGuess": "trapezio",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "8": {
+    "wordToGuess": "elettrico",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "9": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "10": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "11": {
+    "wordToGuess": "camicia",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "12": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "13": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "14": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "__________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "15": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "16": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "17": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "18": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "19": {
+    "wordToGuess": "deserto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "20": {
+    "wordToGuess": "deserto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "21": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "22": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "__________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "23": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "24": {
+    "wordToGuess": "palpito",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "25": {
+    "wordToGuess": "palpito",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "26": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "27": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "28": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "29": {
+    "wordToGuess": "trapezio",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "30": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "__________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "31": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "__________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "32": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "33": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "34": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "35": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "36": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "37": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "__________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "38": {
+    "wordToGuess": "deserto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "39": {
+    "wordToGuess": "sorgente",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "40": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "41": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "42": {
+    "wordToGuess": "camicia",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "43": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "44": {
+    "wordToGuess": "palpito",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "45": {
+    "wordToGuess": "palpito",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "46": {
+    "wordToGuess": "deserto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "47": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "48": {
+    "wordToGuess": "camicia",
+    "guessedLetters": "_______",
+    "chosenLetters": "j",
+    "remainingAttempts": 7,
+    "gameStatus": ""
+  },
+  "49": {
+    "wordToGuess": "camicia",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "50": {
+    "wordToGuess": "trapezio",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "51": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "r",
+    "remainingAttempts": 7,
+    "gameStatus": ""
+  },
+  "52": {
+    "wordToGuess": "trapezio",
+    "guessedLetters": "________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "53": {
+    "wordToGuess": "elettrico",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "54": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "__________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "55": {
+    "wordToGuess": "amuleto",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "56": {
+    "wordToGuess": "palpito",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "57": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "58": {
+    "wordToGuess": "magnetizzato",
+    "guessedLetters": "____________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "59": {
+    "wordToGuess": "palpito",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "60": {
+    "wordToGuess": "elettrico",
+    "guessedLetters": "_l_tt___o",
+    "chosenLetters": "dghujnotwlk",
+    "remainingAttempts": 0,
+    "gameStatus": "",
+    "status": "lost"
+  },
+  "61": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "s__nt_lla",
+    "chosenLetters": "fdsawetyqnluz",
+    "remainingAttempts": 0,
+    "gameStatus": "",
+    "status": "lost"
+  },
+  "62": {
+    "wordToGuess": "camicia",
+    "guessedLetters": "_______",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  },
+  "63": {
+    "wordToGuess": "arcobaleno",
+    "guessedLetters": "ar_obale_o",
+    "chosenLetters": "dfgutaerbklohx",
+    "remainingAttempts": 0,
+    "gameStatus": "lost"
+  },
+  "64": {
+    "wordToGuess": "scintilla",
+    "guessedLetters": "scintilla",
+    "chosenLetters": "ghjfaeiconutsl",
+    "remainingAttempts": 1,
+    "gameStatus": "won"
+  },
+  "65": {
+    "wordToGuess": "elettrico",
+    "guessedLetters": "_________",
+    "chosenLetters": "",
+    "remainingAttempts": 8,
+    "gameStatus": ""
+  }
+}

@@ -3,6 +3,7 @@
 */
 
 import express from 'express';
+import cors from 'cors';
 import {
   checkCredentials,
   readAllStudents,
@@ -13,11 +14,12 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+// permit loading resources from any origins (browsers)
+app.use(cors());
 
 app.get('/digitazon/2023/02/students', checkCredentials, readAllStudents);
-// :id
 app.get(
-  '/digitazon/2023/02/group/:id/students',
+  '/digitazon/2023/02/group/4/students',
   checkCredentials,
   readGroupStudents
 );

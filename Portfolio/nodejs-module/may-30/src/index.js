@@ -20,6 +20,19 @@ app.post('/todos', (req, res) => resources.create(req, res, 'todos'));
 app.put('/todos/:id', (req, res) => resources.update(req, res, 'todos'));
 app.delete('/todos/:id', (req, res) => resources.remove(req, res, 'todos'));
 
+// un corso può essere realizzato da più utenti, un utente può vendere più corsi
+app.get('/users', readUsers);
+app.get('/users/courses', readUsersCourses);
+app.get('/courses', readCourses);
+
+// Obiettivo: ottenere tutti i corsi che hanno realizzato più di 100 vendite,
+// venduti dagli utenti che si sono registrati dopo una certa data e che hanno il profilo verificato
+//
+//     /users/courses?sold[gt]=100&user.registrationDate[gt]=2023/01/01&user.verified=true
+//
+
+// 1) prendo gli utenti
+
 // To do
 app.get('/users/:id/todos', (req, res) =>
   resources.readUserTodos(req, res, 'usersTodos')
