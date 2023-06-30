@@ -1,1 +1,1 @@
-export * from './lib/express-todos';
+export * from './lib/todo.schema';

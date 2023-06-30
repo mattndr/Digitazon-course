@@ -1,1 +1,1 @@
-export * from './lib/express-users-buyers';
+export * from './lib/buyer.schema';

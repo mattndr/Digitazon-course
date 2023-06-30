@@ -1,1 +1,2 @@
-export * from './lib/express-users-sellers';
+export * from './lib/seller.schema';
+export * from './lib/sellers.routes';
