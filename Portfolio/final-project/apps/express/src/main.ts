@@ -9,6 +9,7 @@ import {
   Seller,
   router as sellers,
 } from '@final-project/express/users/sellers';
+import { Buyer } from '@final-project/express/users/buyers';
 
 // config file
 dotenv.config({ path: __dirname + '../.env' });
@@ -26,7 +27,9 @@ async function startDbConnection() {
     // await newSeller.save();
     // const newBuyer = new Seller({email: 'buyer@a.com', password: 'test'})
     // await newBuyer.save();
-
+    // const buyer = await Buyer.findOne({ email: 'a@b.com' }).exec();
+    // const newSeller = new Seller({ user: buyer.id });
+    // await newSeller.save();
     // const newSeller = new Seller({
     //   email: 'a@b.com',
     //   password: 'test',
@@ -96,10 +99,10 @@ app.use(
     httpOnly: true,
   })
 );
-
 app.use('/auth', auth);
 app.use('/courses', courses);
-app.use('/sellers/:id', sellers);
+// app.use('/buyers', buyers);
+app.use('/seller', sellers);
 
 app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });

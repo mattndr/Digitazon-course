@@ -2,32 +2,19 @@ import mongoose from 'mongoose';
 
 // every SCHEMA maps to a mongoDB COLLECTION and define the shape of the documents within that collection
 const sellerSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  // phoneNumber: { type: String, required: true },
-  // fullName: {
-  //   firstName: { type: String, required: true },
-  //   lastName: { type: String, required: true },
-  // },
-  // birthDate: { type: Date, required: true },
-  // address: {
-  //   streetAddress: { type: String, required: true },
-  //   zip: { type: Number, required: true },
-  //   town: { type: String, required: true },
-  //   country: { type: String, required: true },
-  // },
-  // profile: {
-  //   description: String,
-  //   presentationVideoUrl: String,
-  // },
-  // verification: {
-  //   id: { type: String, unique: true, sparse: true },
-  //   status: {
-  //     type: String,
-  //     enum: ['accepted', 'refused', 'pending'],
-  //   },
-  //   sumbmissionDate: Date,
-  // },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  verification: {
+    id: { type: String, unique: true, sparse: true },
+    status: {
+      type: String,
+      enum: ['accepted', 'refused', 'pending'],
+    },
+    sumbmissionDate: Date,
+  },
+  profile: {
+    description: String,
+    presentationVideoUrl: String,
+  },
   courses: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: 'Course',

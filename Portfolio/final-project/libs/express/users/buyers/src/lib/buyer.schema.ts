@@ -4,7 +4,8 @@ import mongoose from 'mongoose';
 const buyerSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // phoneNumber: { type: String, required: true },
+  registrationDate: { type: Date, required: true },
+  phoneNumber: { type: String, required: true, unique: true },
   // fullName: {
   //   firstName: { type: String, required: true },
   //   lastName: { type: String, required: true },
