@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { Buyer } from '@final-project/express/users/buyers';
-import { Seller } from '@final-project/express/users/sellers';
+import { User, readOne } from '@final-project/express/users';
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -12,23 +11,26 @@ export const login = async (req, res) => {
       message: 'Credenziali mancanti.',
     });
   }
-  const user = await Buyer.findOne({ email }, { _id: 1, password: 1 }).exec();
-  if (!user || !bcrypt.compareSync(password, user.password)) {
-    return res.status(404).send({
-      data: {},
-      error: true,
-      message: 'Credenziali errate.',
-    });
-  }
-  const seller = await Seller.findOne({ user: user.id }, { _id: 1 }).exec();
-  const objToSign = seller
-    ? { id: user.id, sellerId: seller.id }
-    : { id: user.id };
-  const token = jwt.sign(objToSign, process.env.JWT_TOKEN, {
-    expiresIn: 86400 * 3, // 24*3 hours
-  });
-  req.session.token = token;
-  res.end();
+  const user = await readOne({ email }, { email: 1 });
+  // Buyer.findOne({ email }, { _id: 1, password: 1 }).exec();
+  console.log(user);
+  return;
+  // if (!user || !(await bcrypt.compare(password, user.password))) {
+  //   return res.status(404).send({
+  //     data: {},
+  //     error: true,
+  //     message: 'Credenziali errate.',
+  //   });
+  // }
+  // const seller = await Seller.findOne({ user: user.id }, { _id: 1 }).exec();
+  // const objToSign = seller
+  //   ? { id: user.id, sellerId: seller.id }
+  //   : { id: user.id };
+  // const token = jwt.sign(objToSign, process.env.JWT_TOKEN, {
+  //   expiresIn: 86400 * 3, // 24*3 hours
+  // });
+  // req.session.token = token;
+  // res.end();
 };
 
 export const signup = async (req, res) => {
@@ -41,7 +43,7 @@ export const signup = async (req, res) => {
     });
   }
   try {
-    const user = new Buyer({
+    const user = new User({
       email,
       password: await bcrypt.hash(password, 12),
       phoneNumber,

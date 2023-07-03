@@ -4,12 +4,8 @@ import cors from 'cors';
 import cookieSession from 'cookie-session';
 import dotenv from 'dotenv';
 import { router as auth } from '@final-project/express/auth';
-import { Course, router as courses } from '@final-project/express/courses';
-import {
-  Seller,
-  router as sellers,
-} from '@final-project/express/users/sellers';
-import { Buyer } from '@final-project/express/users/buyers';
+import { router as courses } from '@final-project/express/courses';
+import { router as users } from '@final-project/express/users';
 
 // config file
 dotenv.config({ path: __dirname + '../.env' });
@@ -23,6 +19,24 @@ async function startDbConnection() {
   try {
     await mongoose.connect(process.env.DB_URL);
 
+    // const newUser = new User({
+    //   email: 'a@b.com',
+    //   password: 'test',
+    //   registrationDate: new Date().toISOString(),
+    //   phoneNumber: '12345',
+    //   fullName: {
+    //     firstName: 'Mario',
+    //     lastName: 'Rossi',
+    //   },
+    //   birthDate: new Date().toISOString(),
+    //   address: {
+    //     streetAddress: 'Via Roma 22',
+    //     zip: 12345,
+    //     town: 'BZ',
+    //     country: 'IT',
+    //   },
+    // });
+    // await newUser.save();
     // const newSeller = new Seller({email: 'seller@a.com', password: 'test'})
     // await newSeller.save();
     // const newBuyer = new Seller({email: 'buyer@a.com', password: 'test'})
@@ -101,8 +115,7 @@ app.use(
 );
 app.use('/auth', auth);
 app.use('/courses', courses);
-// app.use('/buyers', buyers);
-app.use('/seller', sellers);
+app.use('/users', users);
 
 app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });

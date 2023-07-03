@@ -4,6 +4,11 @@ import mongoose from 'mongoose';
 // every SCHEMA maps to a mongoDB COLLECTION and define the shape of the documents within that collection
 export const courseSchema = new mongoose.Schema(
   {
+    seller_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     creationDatetime: {
       type: Date,
       required: true,
@@ -16,16 +21,12 @@ export const courseSchema = new mongoose.Schema(
     startingDate: Date,
     endingDate: Date,
     minimumEnrollments: { type: Number, min: 0 },
-    todos: [todoSchema], // a course will likely have only a few Todos, and there is no need to access those Todos on their own
-    enrollments: {
+    todos: [todoSchema], // a course will not likely have many Todos, and there is no need to access those Todos on their own
+    enrollments_id: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'Enrollment',
     },
-    // seller_id: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'Seller',
-    //   required: true,
-    // },
+
     // todos: {
     //   type: [mongoose.Schema.Types.ObjectId],
     //   ref: 'Todo'
