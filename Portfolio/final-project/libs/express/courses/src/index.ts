@@ -1,3 +1,3 @@
 export * from './lib/courses.routes';
-export * from './lib/courses.controller';
+export * as controller from './lib/courses.controller';
 export * from './lib/course.schema';

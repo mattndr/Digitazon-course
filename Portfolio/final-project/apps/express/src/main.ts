@@ -9,7 +9,11 @@ import { router as users } from '@final-project/express/users';
 
 // config file
 dotenv.config({ path: __dirname + '../.env' });
-
+if (process.env.DEBUG === 'false') {
+  console.log = function () {
+    return;
+  };
+}
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
@@ -104,12 +108,12 @@ async function startDbConnection() {
 startDbConnection();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 // helps to stores the session data on the client within a cookie without requiring any database/resources on the server side
 app.use(
   cookieSession({
     name: 'app-session',
-    secret: 'COOKIE_SECRET', // should use as secret environment variable
+    secret: process.env.COOKIE_SECRET,
     httpOnly: true,
   })
 );

@@ -1,65 +1,66 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { User, readOne } from '@final-project/express/users';
+import {
+  readOne as readUser,
+  create as createUser,
+} from '@final-project/express/users';
+import {
+  validateEmail,
+  validatePassword,
+  validatePhoneNumber,
+} from './dataValidation';
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(404).send({
-      data: {},
       error: true,
-      message: 'Credenziali mancanti.',
+      message: 'Inserire email e password.',
     });
   }
-  const user = await readOne({ email }, { email: 1 });
-  // Buyer.findOne({ email }, { _id: 1, password: 1 }).exec();
+  const user = await readUser({ email }, { password: 1 });
   console.log(user);
-  return;
-  // if (!user || !(await bcrypt.compare(password, user.password))) {
-  //   return res.status(404).send({
-  //     data: {},
-  //     error: true,
-  //     message: 'Credenziali errate.',
-  //   });
-  // }
-  // const seller = await Seller.findOne({ user: user.id }, { _id: 1 }).exec();
-  // const objToSign = seller
-  //   ? { id: user.id, sellerId: seller.id }
-  //   : { id: user.id };
-  // const token = jwt.sign(objToSign, process.env.JWT_TOKEN, {
-  //   expiresIn: 86400 * 3, // 24*3 hours
-  // });
-  // req.session.token = token;
-  // res.end();
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return res.status(404).send({
+      error: true,
+      message: 'Email e/o password non corrette.',
+    });
+  }
+  const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, {
+    expiresIn: 86400 * 3, // 24*3 hours
+  });
+  req.session.token = token;
+  // res.redirect(`/users/${user.id}/dashboard`);
+  res.send({ data: { userId: user.id } });
 };
 
 export const signup = async (req, res) => {
+  console.log(req.body);
   const { email, password, phoneNumber } = req.body;
-  if (!email || !password || !phoneNumber) {
+  const validationMessage = ['Controllare i seguenti campi: '];
+  if (!validateEmail(email)) validationMessage.push('email');
+  if (!validatePassword(password)) validationMessage.push('password');
+  if (!validatePhoneNumber(phoneNumber))
+    validationMessage.push('numero di telefono');
+  if (validationMessage.length > 1) {
     return res.status(404).send({
-      data: {},
       error: true,
-      message: 'Dato/i mancante/i. Inserire tutti i dati richiesti.',
+      message: validationMessage.join(', ').replace(/: , /, ': [').concat(']'),
     });
   }
-  try {
-    const user = new User({
-      email,
-      password: await bcrypt.hash(password, 12),
-      phoneNumber,
+  if (
+    await createUser({
+      ...req.body,
+      password: await bcrypt.hash(req.body.password, 12),
       registrationDate: new Date().toISOString(),
-    });
-    await user.save();
-    res.status(201).send({ data: 'Utente creato' });
-  } catch (err) {
-    console.log(err);
-    console.log('signup ERR_CODE:', err.code);
+    })
+  )
+    res.status(201).end();
+  else
     res.status(409).send({
-      data: {},
       error: true,
-      message: 'Impossibile creare un account con i dati forniti.',
+      message: 'Errore: impossibile creare un account con i dati forniti.',
     });
-  }
 };
 
 export const logout = async (req, res) => {

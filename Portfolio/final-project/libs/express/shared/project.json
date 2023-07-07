@@ -1,21 +1,21 @@
 {
-  "name": "express-todos",
+  "name": "express-shared",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/express/todos/src",
+  "sourceRoot": "libs/express/shared/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/express/todos/**/*.ts"]
+        "lintFilePatterns": ["libs/express/shared/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/express/todos/jest.config.ts",
+        "jestConfig": "libs/express/shared/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -26,5 +26,5 @@
       }
     }
   },
-  "tags": ["scope:express", "type:feature"]
+  "tags": ["scope:express", "type:shared"]
 }

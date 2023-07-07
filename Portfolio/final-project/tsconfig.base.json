@@ -20,7 +20,7 @@
       "@final-project/express/enrollments": [
         "libs/express/enrollments/src/index.ts"
       ],
-      "@final-project/express/todos": ["libs/express/todos/src/index.ts"],
+      "@final-project/express/shared": ["libs/express/shared/src/index.ts"],
       "@final-project/express/users": ["libs/express/users/src/index.ts"]
     }
   },

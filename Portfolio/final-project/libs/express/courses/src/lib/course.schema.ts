@@ -1,13 +1,19 @@
-import { todoSchema } from '@final-project/express/todos';
+import { todoSchema } from './todo.schema';
 import mongoose from 'mongoose';
 
 // every SCHEMA maps to a mongoDB COLLECTION and define the shape of the documents within that collection
 export const courseSchema = new mongoose.Schema(
   {
-    seller_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
+    seller: {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+      },
+      fullName: {
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
+      },
     },
     creationDatetime: {
       type: Date,
@@ -21,12 +27,12 @@ export const courseSchema = new mongoose.Schema(
     startingDate: Date,
     endingDate: Date,
     minimumEnrollments: { type: Number, min: 0 },
-    todos: [todoSchema], // a course will not likely have many Todos, and there is no need to access those Todos on their own
+    todos: [todoSchema], // there is no need to access those Todos on their own
     enrollments_id: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'Enrollment',
     },
-
+    deleted: { type: Boolean, default: false },
     // todos: {
     //   type: [mongoose.Schema.Types.ObjectId],
     //   ref: 'Todo'
