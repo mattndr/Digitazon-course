@@ -158,7 +158,7 @@ export default function CourseManagement() {
                     <div className="flex justify-center items-center gap-6">
                       <PopupButton courseData={courseData}></PopupButton>
                       <button
-                        className="py-2 px-6 bg-cyan-400 rounded-lg hover:bg-cyan-300 active:bg-cyan-200"
+                        className="py-2 text-lg px-6 bg-cyan-400 rounded-lg hover:bg-cyan-300 active:bg-cyan-200"
                         onClick={() =>
                           updateCourseStatus(
                             'publicationDatetime',

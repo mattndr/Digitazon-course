@@ -1,9 +1,9 @@
 import styles from './app.module.css';
 import { Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
-import Courses from './components/Courses.component';
+import Courses from './components/courses/Courses.component';
 import Login from './components/auth/Login.component';
 import Signup from './components/auth/Signup.component';
-import Dashboard from './components/Dashboard.component';
+import Dashboard from './components/dashboard/Dashboard.component';
 import CourseManagement from './components/courses/CourseManagement.component';
 import Profile from './components/user/Profile.component';
 import CourseDetails from './components/courses/CourseDetails.component';

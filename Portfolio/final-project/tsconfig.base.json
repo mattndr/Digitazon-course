@@ -14,15 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@final-project/express/auth": ["libs/express/auth/src/index.ts"],
-      "@final-project/express/courses": ["libs/express/courses/src/index.ts"],
-      "@final-project/express/enrollments": [
-        "libs/express/enrollments/src/index.ts"
-      ],
-      "@final-project/express/shared": ["libs/express/shared/src/index.ts"],
-      "@final-project/express/users": ["libs/express/users/src/index.ts"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
