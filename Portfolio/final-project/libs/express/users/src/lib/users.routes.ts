@@ -3,71 +3,65 @@ import * as controller from './users.controller';
 import { controller as courseController } from '@final-project/express/courses';
 import {
   verifyIsLogged,
-  verifyAuthorization,
+  verifyUserAuthorization,
 } from '@final-project/express/shared';
-import { verifyIsSeller } from './users.middlewares';
+import { verifyIsSeller, verifySellerAuthorization } from './users.middlewares';
 
 export const router: Router = express.Router();
 
-// router.get('/', controller.readAll);
-
-// When a logged user click on his profile (infos)
+// Get user's private profile
 router.get(
   '/:id/profile',
   verifyIsLogged,
-  verifyAuthorization,
+  verifyUserAuthorization,
   controller.readPrivateProfile
 );
 
-// When a logged user click on his dashboard
-router.get(
-  '/:id/dashboard',
+// Update user's private profile
+router.patch(
+  '/:id/profile',
   verifyIsLogged,
-  verifyAuthorization,
-  controller.readPrivateDashboard
+  verifyUserAuthorization,
+  controller.updatePrivateProfile
 );
 
-// Get all active courses of this seller
+// Get user's public profile
+router.get('/:id', controller.readPublicProfile);
+
+// Get all active courses for this seller
 router.get('/:id/courses/active', courseController.readActiveCoursesBySellerId);
 
-// Get all enrolled courses of this user
-// router.get('/:id/courses/enrolled', verifyIsLogged,
-// verifyAuthorization, courseController.readEnrolledCoursesByUserId)
-
-// Courses management routes for sellers
+// Routes for manage courses
 router.post(
   '/:id/courses',
   verifyIsLogged,
-  verifyAuthorization,
   verifyIsSeller,
   courseController.create
-  // controller.addCourseToSeller
 );
 router.get(
   '/:id/courses',
   verifyIsLogged,
-  verifyAuthorization,
   verifyIsSeller,
   courseController.readCoursesBySellerId
 );
 router.get(
   '/:id/courses/:cid',
   verifyIsLogged,
-  verifyAuthorization,
   verifyIsSeller,
+  verifySellerAuthorization,
   courseController.readCourseDetails
 );
-router.put(
+router.patch(
   '/:id/courses/:cid',
   verifyIsLogged,
-  verifyAuthorization,
   verifyIsSeller,
+  verifySellerAuthorization,
   courseController.updateCourse
 );
 router.delete(
   '/:id/courses/:cid',
   verifyIsLogged,
-  verifyAuthorization,
   verifyIsSeller,
+  verifySellerAuthorization,
   courseController.deleteCourse
 );

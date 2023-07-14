@@ -1,49 +1,36 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
-import {
-  BrowserRouter,
-  Link,
-  Navigate,
-  Outlet,
-  Route,
-  Routes,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import Courses from './components/Courses.component';
 import Login from './components/auth/Login.component';
 import Signup from './components/auth/Signup.component';
 import Dashboard from './components/Dashboard.component';
 import CourseManagement from './components/courses/CourseManagement.component';
-import { GuardedRoute } from 'react-router-guards';
+import Profile from './components/user/Profile.component';
+import CourseDetails from './components/courses/CourseDetails.component';
+import UserDetails from './components/user/UserDetails.component';
+import { useEffect, useState } from 'react';
+import ErrorMsg from './components/shared/ErrorMsg.component';
 
 function Main() {
   const navigate = useNavigate();
-
-  async function handleLogout() {
-    const response = await fetch(`http://localhost:3000/auth/logout`, {
-      method: 'GET',
-      credentials: 'include',
-    });
-    if (response.ok) {
-      localStorage.removeItem('userId');
-      navigate('/courses');
-    } else console.log('Logout non effettuato');
-  }
+  const userId = localStorage.getItem('userId');
+  const [searchContent, setSearchContent] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   return (
     <>
-      <header className="flex justify-between items-center gap-8 py-4 px-8 bg-gray-200">
-        Header
-        {/* <h1
-          className="text-2xl font-bold bg-lime-500 py-2 px-4 cursor-pointer"
-          onClick={() => navigate('')}
-        >
-          My Store
-        </h1>
-        <div className="flex basis-[30%]">
+      <header className="flex justify-between items-center gap-8 py-7 px-24 bg-cyan-600 border-b-4 border-gray-600">
+        <div className="basis-[33%]">
+          <h1
+            className="text-2xl font-mono w-fit font-bold cursor-pointer rounded-full px-8 py-2 border-l-8 border-l-cyan-500 border-r-8 border-r-white hover:bg-cyan-500 active:bg-cyan-400"
+            onClick={() => navigate('/courses')}
+          >
+            Progetto
+          </h1>
+        </div>
+        <div className="flex basis-[33%]">
           <input
-            placeholder="Search a product"
+            placeholder="Cerca un corso"
             className="border-2 border-gray-300 p-1 rounded-lg rounded-r-none border-r-0 w-full placeholder:pl-3"
             value={searchContent}
             onChange={(e) => setSearchContent(e.target.value)}
@@ -53,79 +40,106 @@ function Main() {
             onClick={() => {
               if (!searchContent) return;
               setSearchContent('');
-              setSelectedCat('');
-              navigate(`products/search/${searchContent}`);
+              navigate(`/courses?search=${searchContent}`);
             }}
           >
-            Search
+            Cerca
           </button>
-          </div> */}
-        <div className="flex gap-4">
-          {!localStorage.getItem('userId') && (
+        </div>
+        <div className="flex basis-[33%] gap-7 justify-end">
+          {!userId && (
             <>
-              {' '}
               <button
-                className="flex gap-2 items-center rounded-lg py-1.5 px-3 bg-lime-500 hover:bg-lime-400 shadow-md"
+                className="text-xl rounded-lg py-1.5 px-6 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
                 onClick={() => navigate('auth/login')}
               >
                 Accedi
               </button>
               <button
-                className="flex gap-1.5 items-center	rounded-lg py-1.5 px-2.5 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
+                className="text-lg rounded-lg py-1.5 px-2.5 bg-gray-700 text-gray-50 hover:bg-gray-600 active:bg-gray-500 hover:text-gray-50 shadow-md"
                 onClick={() => navigate('auth/signup')}
               >
                 Registrati
               </button>{' '}
             </>
           )}
-          {localStorage.getItem('userId') && (
-            <button
-              className="flex gap-1.5 items-center	rounded-lg py-1.5 px-2.5 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+          {userId && (
+            <>
+              <button
+                className="text-lg font-bold rounded-lg py-1.5 px-8 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
+                onClick={() => navigate(`/courses`)}
+              >
+                Corsi
+              </button>
+              <button
+                className="text-lg font-bold rounded-lg py-1.5 px-4 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
+                onClick={() => navigate(`/dashboard`)}
+              >
+                Dashboard
+              </button>
+              <button
+                className="text-lg rounded-lg py-1.5 px-4 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
+                onClick={() => navigate(`/profile`)}
+              >
+                Profilo
+              </button>
+            </>
           )}
-        </div>{' '}
-        */
+        </div>
       </header>
       <main>
-        <section className="basis-[75%]">
+        {errorMsg && (
+          <ErrorMsg message={errorMsg} setPropFunction={setErrorMsg}></ErrorMsg>
+        )}
+        <section>
           <Outlet></Outlet>
         </section>
       </main>
     </>
   );
 }
-const check = async (to, from, next) => {
-  throw new Error(`Not allowed.`);
-  next();
-  // const { name } = to.match.params;
-  // try {
-  //   const pokemon = await api.pokemon.get(name);
-  //   next.props({ pokemon });
-  // } catch {
-  //   throw new Error(`Pokemon "${name}" does not exist.`);
-  // }
-};
+
+function CheckLocalStorage({ component }) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const cookieExpTime = localStorage.getItem('userId-exp');
+    if (!cookieExpTime) {
+      return;
+    }
+    const now = new Date();
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > parseInt(cookieExpTime)) {
+      // If the item is expired, delete the item from storage
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userId-exp');
+      navigate('/auth/login', { replace: true });
+    }
+  }, []);
+  return <>{component}</>;
+}
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />}>
-        <GuardedRoute
-          guards={[check]}
-          path="courses"
-          element={<Courses />}
-        ></GuardedRoute>
+        <Route path="users/:userId" element={<UserDetails />}></Route>
+        <Route path="courses" element={<Courses />}></Route>
+        <Route path="courses/:courseId" element={<CourseDetails />}></Route>
         <Route path="auth">
           <Route path="login" element={<Login />}></Route>
           <Route path="signup" element={<Signup />}></Route>
         </Route>
-        <Route path="dashboard" element={<Dashboard />}></Route>
         <Route
-          path="/courses/:courseId/management"
-          element={<CourseManagement />}
+          path="dashboard"
+          element={<CheckLocalStorage component={<Dashboard />} />}
+        ></Route>
+        <Route
+          path="profile"
+          element={<CheckLocalStorage component={<Profile />} />}
+        ></Route>
+        <Route
+          path="courses/:courseId/management"
+          element={<CheckLocalStorage component={<CourseManagement />} />}
         ></Route>
       </Route>
       <Route index element={<Navigate to="courses" />} />

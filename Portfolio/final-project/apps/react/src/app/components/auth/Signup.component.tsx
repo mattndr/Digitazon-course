@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ErrorMsg from '../shared/ErrorMsg.component';
+import DoneMsg from '../shared/DoneMsg.component';
 
 export default function Signup() {
   const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
   const [errorMsg, setErrorMsg] = useState('');
-  const [registrationDoneMsg, setRegistrationDoneMsg] = useState('');
+  const [doneMsg, setDoneMsg] = useState('');
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -45,51 +48,56 @@ export default function Signup() {
     };
   };
 
-  // const strToObj = (parts, val) => {
-  //   if (!Array.isArray(parts)) {
-  //     parts = parts.split('.');
-  //   }
-  //   if (!parts.length) {
-  //     return val;
-  //   }
-  //   return {
-  //     [parts.shift()]: strToObj(parts, val),
-  //   };
-  // };
-
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:3000/auth/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(inputs),
-    });
-    if (response.ok) {
-      setRegistrationDoneMsg('Utente creato. Puoi procedere con il login');
-      setErrorMsg('');
-    } else {
-      setErrorMsg((await response.json()).message);
-      setRegistrationDoneMsg('');
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/auth/signup`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(inputs),
+        }
+      );
+      if (response.ok) {
+        setDoneMsg('Utente registrato. Puoi procedere con il login.');
+        setErrorMsg('');
+      } else {
+        setErrorMsg(
+          response.headers.get('content-type') === 'application/json'
+            ? (await response.json()).message
+            : `${response.status} ${response.statusText}`
+        );
+        setDoneMsg('');
+      }
+    } catch {
+      setErrorMsg(
+        errorMsg ? errorMsg + ' ' : 'Server momentaneamente non raggiungibile.'
+      );
     }
-  }
+  };
+
+  useEffect(() => {
+    if (userId) navigate('/courses');
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [errorMsg, doneMsg]);
 
   return (
-    <div className="flex flex-col gap-8 items-center bg-gray-50">
-      <h2 className="mt-12 text-2xl">Registra un account</h2>
-      {errorMsg && (
-        <div className="bg-red-100 p-4 mx-[30%] mt-6 text-center">
-          {errorMsg}
-        </div>
-      )}
-      {!registrationDoneMsg && (
+    <section className="flex flex-col gap-8 items-center min-h-full">
+      <h2 className="mt-16 mb-4 text-2xl">Registra un account</h2>
+      {errorMsg && <ErrorMsg message={errorMsg}></ErrorMsg>}
+      {!doneMsg ? (
         <form
           onSubmit={handleSubmit}
-          className="[&_label]:block [&_input]:bg-gray-0 bg-gray-100 [&_input]:font-medium signup-form flex flex-col gap-6 border-2 p-8"
+          className="flex flex-col gap-8 py-8 px-16 mb-16 bg-gray-100 border-t-4 border-gray-400 [&_div]:flex [&_div]:flex-col [&_div]:items-center	[&_input]:mt-3 [&_input]:font-medium [&_input]:border-l-4 [&_input]:mt-1 signup-form"
         >
           <div>
-            <label htmlFor="email">Email: </label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -100,8 +108,8 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label htmlFor="password">
-              Password:{' '}
+            <label htmlFor="password" className="text-center">
+              Password
               <div className="flex flex-col">
                 <small>Lunghezza minima: 8 caratteri</small>
                 <small>Almeno un carattere maiuscolo e un numero</small>
@@ -115,10 +123,11 @@ export default function Signup() {
               required
               value={inputs.password}
               onChange={handleChange}
+              pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
             />
           </div>
           <div>
-            <label htmlFor="fullName.firstName">Nome: </label>
+            <label htmlFor="fullName.firstName">Nome</label>
             <input
               type="text"
               name="fullName.firstName"
@@ -129,7 +138,7 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label htmlFor="fullName.lastName">Cognome: </label>
+            <label htmlFor="fullName.lastName">Cognome</label>
             <input
               type="text"
               name="fullName.lastName"
@@ -140,7 +149,7 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label htmlFor="birthDate">Data di nascita: </label>
+            <label htmlFor="birthDate">Data di nascita</label>
             <input
               type="date"
               name="birthDate"
@@ -152,7 +161,7 @@ export default function Signup() {
           </div>
 
           <div>
-            <label htmlFor="address.streetAddress">Indirizzo: </label>
+            <label htmlFor="address.streetAddress">Indirizzo</label>
             <input
               type="text"
               name="address.streetAddress"
@@ -163,7 +172,7 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label htmlFor="address.city">Comune: </label>
+            <label htmlFor="address.city">Comune</label>
             <input
               type="text"
               name="address.city"
@@ -174,7 +183,7 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label htmlFor="address.province">Provincia: </label>
+            <label htmlFor="address.province">Provincia</label>
             <select
               id="address.province"
               name="address.province"
@@ -293,7 +302,7 @@ export default function Signup() {
             </select>
           </div>
           <div>
-            <label htmlFor="phoneNumber">Numero di telefono: </label>
+            <label htmlFor="phoneNumber">Numero di telefono</label>
             <input
               type="tel"
               name="phoneNumber"
@@ -306,26 +315,23 @@ export default function Signup() {
           <div>
             <button
               type="submit"
-              className="rounded-lg block py-3 px-4 mt-4 mx-auto text-center bg-cyan-400 hover:bg-cyan-500"
+              className="w-full rounded-lg block py-3 px-4 mt-10 mx-auto text-center bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
             >
               Registrati
             </button>
           </div>
         </form>
-      )}
-      {registrationDoneMsg && (
+      ) : (
         <>
-          <div className="bg-green-50 p-4 mx-[30%] mt-8 text-center">
-            {registrationDoneMsg}
-          </div>
+          <DoneMsg message={doneMsg}></DoneMsg>
           <button
-            onClick={() => navigate('login')}
-            className="p-4 text-center bg-cyan-400 hover:cyan-500"
+            onClick={() => navigate('/auth/login')}
+            className="p-4 text-center bg-cyan-400 hover:cyan-500 active:bg-cyan-200"
           >
             Vai al login
           </button>
         </>
       )}
-    </div>
+    </section>
   );
 }

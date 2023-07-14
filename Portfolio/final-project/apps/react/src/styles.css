@@ -2,3 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
+html, body, body > div {
+  height: 100vh
+}
+body > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+main, section {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+

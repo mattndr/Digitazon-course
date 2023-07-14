@@ -6,8 +6,8 @@ export const create = async (body) => {
     const course = new Course(body);
     await course.save();
     return course._id;
-  } catch (err) {
-    console.log(`[${new Date().toISOString()}] ERROR\n`, err);
+  } catch {
+    return;
   }
 };
 
@@ -17,78 +17,193 @@ export const readCourse = async (id, extraFieldsToSelect) => {
       {
         id: new mongoose.Types.ObjectId(id),
         deleted: false,
-        startingDate: null,
+        startingDatetime: null,
       },
       {
         seller: 1,
         title: 1,
         description: 1,
         presentationVideoUrl: 1,
+        imageUrl: 1,
         price: 1,
         ...extraFieldsToSelect,
       }
     )
-      .where('publicationDate')
+      .where('publicationDatetime')
       .ne(null)
       .exec();
-  } catch (err) {
+  } catch {
     return;
   }
 };
 
-export const readCourses = async () => {
+export const readAll = async () => {
   try {
     return await Course.find(
-      { deleted: false, startingDate: null },
-      { seller: 1, title: 1, description: 1, presentationVideoUrl: 1, price: 1 }
+      {
+        deleted: false,
+        startingDatetime: null,
+      },
+      { seller: 1, title: 1, imageUrl: 1, price: 1, description: 1 }
     )
-      .where('publicationDate')
+      .where('publicationDatetime')
       .ne(null)
       .exec();
-  } catch (err) {
+  } catch {
     return;
   }
 };
 
-// TO-TEST
-//
-//
-//
-//
-export const readCoursesBySellerId = async (id) => {
-  return await Course.find({ seller: { id }, deleted: false }).exec();
+export const readByEnrolledUser = async (uid) => {
+  try {
+    return await Course.find(
+      {
+        enrolledUsers: {
+          $elemMatch: { $eq: new mongoose.Types.ObjectId(uid) },
+        },
+      },
+      { seller: 1, title: 1, endingDatetime: 1 }
+    );
+  } catch {
+    return;
+  }
 };
 
-export const readActiveCoursesBySellerId = async (id) => {
-  const courses = await Course.find({
-    $and: [
-      { seller_id: id },
-      { deleted: { $eq: false } },
-      { publicationDate: { $ne: null } },
-      { startingDate: { $eq: null } },
-    ],
+export const readBySearchParams = async (pattern) => {
+  try {
+    return await Course.find(
+      {
+        $or: [
+          { title: { $regex: pattern, $options: 'i' } },
+          { description: { $regex: pattern, $options: 'i' } },
+        ],
+        deleted: false,
+        publicationDatetime: { $ne: null },
+        startingDatetime: { $eq: null },
+      },
+      {
+        seller: 1,
+        title: 1,
+        endingDatetime: 1,
+        description: 1,
+        imageUrl: 1,
+        price: 1,
+      }
+    );
+  } catch {
+    return;
+  }
+};
+
+export const readOne = async (_id) => {
+  try {
+    return await Course.findOne(
+      {
+        _id,
+        deleted: false,
+      },
+      {
+        seller: 1,
+        title: 1,
+        description: 1,
+        presentationVideoUrl: 1,
+        imageUrl: 1,
+        price: 1,
+        todos: 1,
+        enrolledUsers: 1,
+        startingDatetime: 1,
+      }
+    );
+    // .where('publicationDatetime')
+    // .ne(null)
+    // .exec();
+  } catch {
+    return;
+  }
+};
+
+export const readCoursesBySellerId = async (id) => {
+  return await Course.find(
+    {
+      $and: [{ 'seller.id': id }, { deleted: { $eq: false } }],
+    },
+    {
+      title: 1,
+      description: 1,
+      presentationVideoUrl: 1,
+      imageUrl: 1,
+      price: 1,
+      todos: 1,
+      creationDatetime: 1,
+      publicationDatetime: 1,
+      startingDatetime: 1,
+      endingDatetime: 1,
+    }
+  ).exec();
+};
+
+export const checkSellerIdMatchingCourseId = async (cid, sid) => {
+  return await Course.exists({
+    $and: [{ _id: cid }, { 'seller.id': sid }, { deleted: { $eq: false } }],
   }).exec();
-  return courses;
+};
+
+export const readActiveCoursesBySellerId = async (id, filters) => {
+  try {
+    const courses = await Course.find(
+      {
+        $and: [
+          { 'seller.id': id },
+          { deleted: { $eq: false } },
+          { publicationDatetime: { $ne: null } },
+          { startingDatetime: { $eq: null } },
+        ],
+      },
+      filters
+    ).exec();
+    return courses;
+  } catch {
+    return [];
+  }
 };
 
 export const readCourseDetails = async (id, cid) => {
   try {
     return await Course.findOne({
-      seller_id: id,
+      'seller.id': id,
       _id: cid,
       deleted: false,
-    }).exec();
-  } catch (err) {
+    })
+      .populate('enrolledUsers', { fullName: 1, email: 1 })
+      .exec();
+  } catch {
     return;
   }
 };
 
 export const updateCourse = async (cid, body) => {
   try {
-    await Course.updateOne({ _id: cid, deleted: false }, body);
+    await Course.findOneAndUpdate({ _id: cid, deleted: false }, body);
     return true;
-  } catch (err) {
-    console.log(err);
+  } catch {
+    return;
+  }
+};
+
+export const addEnrollmentToCourse = async (cid, userId) => {
+  try {
+    const course = await Course.findOne({
+      _id: cid,
+      deleted: false,
+      startingDatetime: null,
+      // 'seller.id': { $ne: userId },
+      // enrolledUsers: { $nin: userId },
+    });
+    if (!course) return false;
+    course.enrolledUsers.push(userId);
+    await course.save();
+    return true;
+  } catch {
     return;
   }
 };

@@ -5,7 +5,7 @@ export const readOne = async (body, filters) => {
 };
 
 export const readUser = async (matching, filters) => {
-  return await User.findOne(matching, filters).exec(); //, { email: 1, fullName: 1 }).exec();
+  return await User.findOne(matching, filters).exec();
 };
 
 export const create = async (body) => {
@@ -13,22 +13,16 @@ export const create = async (body) => {
     const user = new User(body);
     await user.save();
     return true;
-  } catch (err) {
-    console.log(`[${new Date().toISOString()}] ERROR\n`, err);
+  } catch {
+    return;
   }
 };
 
-// export const addCourseToSeller = async (id, newCourseId) => {
-//   try {
-//     const user = await User.findById(id).exec();
-//     user.seller_courses.push(newCourseId);
-//     await user.save();
-//     return user;
-//   } catch (err) {
-//     console.log(`[${new Date().toISOString()}] ERROR\n`, {
-//       code: err.code,
-//       keyPattern: err.keyPattern,
-//       keyValue: err.keyValue,
-//     });
-//   }
-// };
+export const updateUser = async (_id, body) => {
+  try {
+    await User.updateOne({ _id }, body);
+    return true;
+  } catch {
+    return;
+  }
+};

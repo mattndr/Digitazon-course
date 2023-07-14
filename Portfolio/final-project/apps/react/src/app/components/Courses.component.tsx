@@ -1,51 +1,96 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('search');
 
   useEffect(() => {
-    (async function getCourses() {
-      const res = await (await fetch(`http://localhost:3000/courses`)).json();
-      setCourses(res.data);
-    })();
-  }, []);
+    search
+      ? (async function getCourses() {
+          const res = await (
+            await fetch(
+              `${import.meta.env.VITE_SERVER_URL}/courses?search=${search}`
+            )
+          ).json();
+          console.log(res.data);
+          setCourses(res.data);
+        })()
+      : (async function getCourses() {
+          const res = await (
+            await fetch(`${import.meta.env.VITE_SERVER_URL}/courses`)
+          ).json();
+
+          setCourses(res.data);
+        })();
+  }, [searchParams]);
+
   return (
     <>
       <header>
-        {<h2 className="mb-8 text-xl font-bold text-center">Corsi</h2>}
+        <h2 className="mb-14 mt-16 text-3xl font-bold text-center">
+          Corsi{' '}
+          {search ? (
+            <>
+              <span className="text-xl font-normal"> che includono </span>
+              <span className="text-2xl font-bold">'{search}'</span>
+            </>
+          ) : (
+            ''
+          )}
+        </h2>
       </header>
-      {courses.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-6">
-          {courses.map((c) => (
-            <Course key={c.id} course={c}></Course>
+      {courses.length > 0 ? (
+        <div className="flex flex-col justify-center gap-10 mx-[16%]">
+          {courses.map((c, i) => (
+            <Course key={i} course={c}></Course>
           ))}
         </div>
+      ) : (
+        <p className="my-8 text-center text-lg">
+          Attualmente non c'è nessun corso disponibile.
+        </p>
       )}
     </>
   );
 }
 
 function Course({ course }) {
+  const navigate = useNavigate();
   return (
-    <article className="flex flex-col justify-between gap-6 basis-[30%] p-6 border-2 bg-gray-50 rounded-lg">
-      <header className="text-lg font-bold text-center">{course.title}</header>
-      {/* <img
-        src={product.images[0]}
-        alt={product.id}
-        width="200px"
-        className="mx-auto"
-      ></img> */}
-      <p className="text-sm">{course.description}</p>
-      <div>
-        <p className="text-lg text-center">
-          Price: <span className="pl-2">{course.price}€</span>
+    <article className="flex items-center gap-10 border-2 bg-gray-50 rounded-lg h-64">
+      <div
+        className={`h-[100%] basis-[30%] bg-cover	bg-center	${
+          course.imageUrl
+            ? `bg-[url(${course.imageUl})]`
+            : "bg-[url('https://placehold.co/600x400/orange/black')]"
+        }`}
+      ></div>
+      <div className="flex flex-col basis-[70%] gap-8 ">
+        <header className="text-2xl font-bold">{course.title}</header>
+        <p className="overflow-hidden">
+          {course.description.substring(0, 300)}...
         </p>
-        <button
-          className="block mx-auto font-medium border-2 rounded-lg p-2 mt-4 mb-0 bg-lime-500 shadow-md hover:bg-lime-400"
-          onClick={(course) => console.log(course)}
-        >
-          ACQUISTA
-        </button>
+        <div className="flex gap-16 justify-between items-center">
+          <button
+            className="text-white font-medium border-2 rounded-lg py-2 px-8 bg-gray-600 hover:bg-gray-500"
+            onClick={() => navigate(`/courses/${course._id}`)}
+          >
+            DETTAGLI
+          </button>
+          <div className="flex items-center mr-10">
+            <p className="text-xl font-bold text-center rounded-l-2xl bg-white text-gray-700 px-5 py-2 bg-gray-50 ">
+              {course.price}€
+            </p>
+            <button
+              className="rounded-r-2xl text-lg font-semibold border-l-2 border-gray-500 py-2 px-12 bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
+              onClick={() => navigate(`/courses/${course._id}`)}
+            >
+              ACQUISTA
+            </button>
+          </div>
+        </div>
       </div>
     </article>
   );

@@ -1,28 +1,28 @@
 import express, { Router } from 'express';
 import * as controller from './courses.controller';
-// import { controller as enrollmentController } from '@final-project/express/enrollments';
 
-import { verifyIsLogged } from '@final-project/express/shared';
+import {
+  getTokenIfPresent,
+  verifyIsLogged,
+  verifyUserAuthorization,
+} from '@final-project/express/shared';
 
 export const router: Router = express.Router();
 
-// get all courses
+// Get all published courses
 router.get('/', controller.readAll);
+// Get courses, using search function
+router.get('/', controller.readByQueryParams);
+// Get courses that the user is enrolled in
+router.get('/', verifyUserAuthorization, controller.readByEnrolledUser);
 
-// TO-FINISH
-// router.post(
-//   '/:id/enrollment',
-//   verifyIsLogged,
-//   enrollmentController.create,
-//   controller.updateCourse
-// );
+// Get course details
+// getTokenIfPresent ensure that when a course is started, only enrolled users can still see course details and view program status
+router.get('/:id', getTokenIfPresent, controller.readOne);
 
-// // [public API]
-// // Get all active courses of this seller
-// // get all courses of this users form /dashboard
-// router.get('/users/:id/courses', controller.readCourses);
-
-// // [private API]
-// router.post('/users/:id/courses/:cid',  controller.createCourse);
-// router.put('/users/:id/courses/:cid', controller.updateCourse);
-// router.delete('/users/:id/courses/:cid', controller.deleteCourse);
+// Update a course when a user enrolls the course
+router.patch(
+  '/:id/enrollments',
+  verifyIsLogged,
+  controller.addEnrollmentToCourse
+);

@@ -19,7 +19,6 @@ export const login = async (req, res) => {
     });
   }
   const user = await readUser({ email }, { password: 1 });
-  console.log(user);
   if (!user || !(await bcrypt.compare(password, user.password))) {
     return res.status(404).send({
       error: true,
@@ -27,15 +26,16 @@ export const login = async (req, res) => {
     });
   }
   const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, {
-    expiresIn: 86400 * 3, // 24*3 hours
+    expiresIn: process.env.COOKIE_LASTINGTIMEINMS.split('*').reduce(
+      (tot, curr) => parseInt(curr) * tot,
+      1
+    ),
   });
   req.session.token = token;
-  // res.redirect(`/users/${user.id}/dashboard`);
   res.send({ data: { userId: user.id } });
 };
 
 export const signup = async (req, res) => {
-  console.log(req.body);
   const { email, password, phoneNumber } = req.body;
   const validationMessage = ['Controllare i seguenti campi: '];
   if (!validateEmail(email)) validationMessage.push('email');

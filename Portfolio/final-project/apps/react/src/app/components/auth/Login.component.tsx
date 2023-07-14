@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ErrorMsg from '../shared/ErrorMsg.component';
 
 export default function Login() {
   const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
   const [errorMsg, setErrorMsg] = useState('');
-  const [loginDoneMsg, setLoginDoneMsg] = useState('');
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -33,89 +34,88 @@ export default function Login() {
     };
   };
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:3000/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(inputs),
-      credentials: 'include',
-    });
-    if (response.ok) {
-      const data = (await response.json()).data;
-      localStorage.setItem('userId', data.userId);
-      // Needed when registering a new course
-      localStorage.setItem('fullName', data.fullName);
-      navigate('/dashboard');
-      // setLoginDoneMsg('Accesso effettuato');
-      // setErrorMsg('');
-    } else {
-      setErrorMsg((await response.json()).message);
-      setLoginDoneMsg('');
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/auth/login`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(inputs),
+          credentials: 'include',
+        }
+      );
+      if (response.ok) {
+        const data = (await response.json()).data;
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem(
+          'userId-exp',
+          (
+            new Date().getTime() + import.meta.env.VITE_COOKIE_LASTINGTIMEINMS
+          ).toString()
+        );
+        navigate('/dashboard', { replace: true });
+      } else {
+        setErrorMsg(
+          response.headers.get('content-type') === 'application/json'
+            ? (await response.json()).message
+            : `${response.status} ${response.statusText}`
+        );
+      }
+    } catch {
+      setErrorMsg(
+        errorMsg ? errorMsg + ' ' : 'Server momentaneamente non raggiungibile.'
+      );
     }
-  }
+  };
+
+  useEffect(() => {
+    if (userId) navigate('/courses');
+  }, []);
 
   return (
-    <div className="flex flex-col gap-8 items-center bg-gray-50">
+    <div className="flex flex-col gap-8 items-center bg-white h-full">
       <h2 className="mt-12 text-2xl">Accedi</h2>
-      {errorMsg && (
-        <div className="bg-red-100 p-4 mx-[30%] mt-6 text-center">
-          {errorMsg}
+      {errorMsg && <ErrorMsg message={errorMsg}></ErrorMsg>}
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-10 p-8 border-t-4 border-gray-400 text-center bg-gray-100 [&_label]:block [&_input]:border-l-4 [&_input]:bg-gray-100 [&_input]:mt-2 [&_input]:font-medium"
+      >
+        <div>
+          <label htmlFor="email">Email: </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            value={inputs.email}
+            onChange={handleChange}
+          />
         </div>
-      )}
-      {!loginDoneMsg && (
-        <form
-          onSubmit={handleSubmit}
-          className="[&_label]:block [&_input]:bg-gray-0 bg-blue-50 [&_input]:font-medium border-blue-200 rounded-lg signup-form flex flex-col gap-6 border-2 p-8"
-        >
-          <div>
-            <label htmlFor="email">Email: </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required
-              value={inputs.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              required
-              value={inputs.password}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className="rounded-lg block py-3 px-4 mt-4 mx-auto text-center bg-cyan-400 hover:bg-cyan-500"
-            >
-              Accedi
-            </button>
-          </div>
-        </form>
-      )}
-      {loginDoneMsg && (
-        <>
-          <div className="bg-green-50 p-4 mx-[30%] mt-8 text-center">
-            {loginDoneMsg}
-          </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            value={inputs.password}
+            onChange={handleChange}
+            pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+          />
+        </div>
+        <div>
           <button
-            onClick={() => navigate('/courses')}
-            className="p-4 text-center bg-cyan-400 hover:cyan-500"
+            type="submit"
+            className="w-full rounded-lg block py-3 px-4 mt-4 mx-auto text-center bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
           >
-            Vai ai corsi
+            Accedi
           </button>
-        </>
-      )}
+        </div>
+      </form>
     </div>
   );
 }

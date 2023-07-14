@@ -22,86 +22,17 @@ const app = express();
 async function startDbConnection() {
   try {
     await mongoose.connect(process.env.DB_URL);
-
-    // const newUser = new User({
-    //   email: 'a@b.com',
-    //   password: 'test',
-    //   registrationDate: new Date().toISOString(),
-    //   phoneNumber: '12345',
-    //   fullName: {
-    //     firstName: 'Mario',
-    //     lastName: 'Rossi',
-    //   },
-    //   birthDate: new Date().toISOString(),
-    //   address: {
-    //     streetAddress: 'Via Roma 22',
-    //     zip: 12345,
-    //     town: 'BZ',
-    //     country: 'IT',
-    //   },
-    // });
-    // await newUser.save();
-    // const newSeller = new Seller({email: 'seller@a.com', password: 'test'})
-    // await newSeller.save();
-    // const newBuyer = new Seller({email: 'buyer@a.com', password: 'test'})
-    // await newBuyer.save();
-    // const buyer = await Buyer.findOne({ email: 'a@b.com' }).exec();
-    // const newSeller = new Seller({ user: buyer.id });
-    // await newSeller.save();
-    // const newSeller = new Seller({
-    //   email: 'a@b.com',
-    //   password: 'test',
-    //   phoneNumber: '12347566789',
-    //   fullName: {
-    //     firstName: 'a',
-    //     lastName: 'b',
-    //   },
-    //   birthDate: new Date().toISOString(),
-    //   address: {
-    //     streetAddress: '12 Street',
-    //     zip: 12345,
-    //     town: 'Venice',
-    //     country: 'IT',
-    //   },
-    // });
-    // await newSeller.save();
-
-    // // const newSeller = await Seller.findOne({ email: 'a@b.com' });
-    // // const course = await Course.findOne({ title: 'My first Course' });
-
-    // const course = new Course({
-    //   seller_id: newSeller._id,
-    //   creationDatetime: new Date().toISOString(),
-    //   title: 'My first Course',
-    // });
-    // await course.save();
-
-    // newSeller.courses_id.push(course._id);
-    // await newSeller.save();
-
-    // newSeller.courses_id.push(course._id);
-    // await newSeller.save();
-
-    //  const course = await Seller.findOne({ title: '"My first Course"' });
-    // // seller.schema.eachPath(function (path) {
-    // //   console.log(path);
-    // // });
-
-    // // seller.courses.push({
-    // //   seller_id: seller._id,
-    // //   creationDatetime: '2023-06-29T17:09:38.760Z',
-    // //   title: 'My first course',
-    // // });
-
-    // // // // const course = seller.courses.find((el) => el.title == 'My first course');
-    // // // // course.todos.push({ title: 'Introduction', rank: 1 });
-    // await seller.save();
-
     app.listen(port, host, () => {
       console.log(`[ ready ] http://${host}:${port}`);
     });
   } catch (error) {
-    console.log(error);
+    console.log(
+      new Date().toLocaleString(),
+      error.code
+        ? `ERROR code: ${error.code}, codename: ${error.codeName}`
+        : error
+    );
+    setTimeout(startDbConnection, 20000);
   }
 }
 
@@ -115,12 +46,23 @@ app.use(
     name: 'app-session',
     secret: process.env.COOKIE_SECRET,
     httpOnly: true,
+    expires: new Date(
+      Date.now() +
+        process.env.COOKIE_LASTINGTIMEINMS.split('*').reduce(
+          (tot, curr) => parseInt(curr) * tot,
+          1
+        )
+    ),
   })
 );
+app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+});
 app.use('/auth', auth);
 app.use('/courses', courses);
 app.use('/users', users);
 
 app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
+  res.redirect('/login');
 });
