@@ -19,13 +19,13 @@ function Main() {
 
   return (
     <>
-      <header className="flex justify-between items-center gap-8 py-7 px-24 bg-cyan-600 border-b-4 border-gray-600">
+      <header className="flex justify-between items-center gap-8 py-7 px-20 bg-cyan-600 border-b-4 border-gray-600">
         <div className="basis-[33%]">
           <h1
             className="text-2xl font-mono w-fit font-bold cursor-pointer rounded-full px-8 py-2 border-l-8 border-l-cyan-500 border-r-8 border-r-white hover:bg-cyan-500 active:bg-cyan-400"
             onClick={() => navigate('/courses')}
           >
-            ProgettoFinale
+            ProgettoFin
           </h1>
         </div>
         <div className="flex basis-[33%]">

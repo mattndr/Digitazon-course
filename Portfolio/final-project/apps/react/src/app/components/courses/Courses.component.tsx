@@ -46,7 +46,7 @@ export default function Courses() {
         </div>
       ) : (
         <p className="my-8 text-center text-lg">
-          Attualmente non c'è nessun corso disponibile.
+          Attualmente non ci sono corsi disponibili.
         </p>
       )}
     </section>
