@@ -272,62 +272,64 @@ export default function Profile() {
                   </div>
                 </div>
               )}
-              <div className="flex justify-evenly px-[10%] bg-gray-100 py-20 border-b-2 border-b-gray-100">
-                <div>
-                  <h3 className="my-4 text-xl font-semibold text-center">
-                    Informazioni personali
-                  </h3>
-                  <div className="flex flex-col bg-gray-200 mt-8 py-2 [&>_div]:bg-white [&>_div]:px-10 [&>_div]:py-4">
-                    <div>
-                      <div className="font-semibold">Nome</div>
+              <div className="flex justify-between px-[25%] bg-gray-100 py-20 border-b-2 border-b-gray-100">
+                <section className="w-fit">
+                  <div className="flex flex-col w-fit items-start bg-gray-0">
+                    <h3 className="my-4 text-xl w-full font-semibold text-center">
+                      Informazioni personali
+                    </h3>
+                    <div className="flex flex-col w-fit bg-gray-200 mt-8 py-2 [&_div]:bg-white [&_div]:px-10 [&_div]:py-4">
                       <div>
-                        {userData['fullName'].firstName +
-                          ' ' +
-                          userData['fullName'].lastName}
+                        <p className="font-semibold">Nome</p>
+                        <p>
+                          {userData['fullName'].firstName +
+                            ' ' +
+                            userData['fullName'].lastName}
+                        </p>
                       </div>
-                    </div>
-                    <div>
-                      <div className="font-semibold">Data di nascita</div>
                       <div>
-                        {
-                          new Date(userData['birthDate'])
-                            .toLocaleString('it-IT')
-                            .split(',')[0]
-                        }
+                        <p className="font-semibold">Data di nascita</p>
+                        <p>
+                          {
+                            new Date(userData['birthDate'])
+                              .toLocaleString('it-IT')
+                              .split(',')[0]
+                          }
+                        </p>
                       </div>
-                    </div>
-                    <div>
-                      <div className="font-semibold">Indirizzo</div>
-                      <div className="flex gap-1">
-                        <span>{userData['address']['streetAddress']},</span>
-                        <span>{userData['address']['city']}</span>
-                        <span>({userData['address']['province']})</span>
+                      <div>
+                        <p className="font-semibold">Indirizzo</p>
+                        <p className="flex gap-1">
+                          <span>{userData['address']['streetAddress']},</span>
+                          <span>{userData['address']['city']}</span>
+                          <span>({userData['address']['province']})</span>
+                        </p>
                       </div>
-                    </div>
-                    <div>
-                      <div className="font-semibold">Email</div>
-                      <div>{userData['email']}</div>
-                    </div>
-                    <div>
-                      <div className="font-semibold">Numero di telefono</div>
-                      <div>{userData['phoneNumber']}</div>
+                      <div>
+                        <p className="font-semibold">Email</p>
+                        <p>{userData['email']}</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold">Numero di telefono</p>
+                        <p>{userData['phoneNumber']}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </section>
                 <div className="flex flex-col gap-4 items-center my-4 h-fit bg-gray-0">
-                  <div className="pb-1 px-2 text-xl font-semibold">
+                  <p className="pb-1 px-2 text-xl font-semibold">
                     Tipologia di account
-                  </div>
+                  </p>
                   {userData['isSeller'] ? (
-                    <div className="text-center text-lg bg-white text-md font-bold p-3 text-cyan-400 w-full">
+                    <p className="text-center text-lg bg-white text-md font-bold p-3 text-cyan-400 w-full">
                       Venditore
-                    </div>
+                    </p>
                   ) : (
                     <div className="w-full">
                       <div className="w-full">
-                        <div className="text-center text-lg bg-white text-md font-bold p-3 text-cyan-400">
+                        <p className="text-center text-lg bg-white text-md font-bold p-3 text-cyan-400">
                           Standard
-                        </div>
+                        </p>
                       </div>
                       <button
                         className="mt-14 p-3 bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200 rounded-lg border w-full"

@@ -25,7 +25,7 @@ function Main() {
             className="text-2xl font-mono w-fit font-bold cursor-pointer rounded-full px-8 py-2 border-l-8 border-l-cyan-500 border-r-8 border-r-white hover:bg-cyan-500 active:bg-cyan-400"
             onClick={() => navigate('/courses')}
           >
-            Progetto
+            ProgettoFinale
           </h1>
         </div>
         <div className="flex basis-[33%]">
@@ -66,19 +66,19 @@ function Main() {
           {userId && (
             <>
               <button
-                className="text-lg font-bold rounded-lg py-1.5 px-8 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
+                className="text-xl font-bold rounded-lg py-1.5 px-8 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
                 onClick={() => navigate(`/courses`)}
               >
                 Corsi
               </button>
               <button
-                className="text-lg font-bold rounded-lg py-1.5 px-4 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
+                className="text-xl font-bold rounded-lg py-1.5 px-4 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 shadow-md"
                 onClick={() => navigate(`/dashboard`)}
               >
                 Dashboard
               </button>
               <button
-                className="text-lg rounded-lg py-1.5 px-4 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
+                className="text-lg rounded-lg py-1.5 px-5 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
                 onClick={() => navigate(`/profile`)}
               >
                 Profilo
@@ -91,9 +91,7 @@ function Main() {
         {errorMsg && (
           <ErrorMsg message={errorMsg} setPropFunction={setErrorMsg}></ErrorMsg>
         )}
-        <section>
-          <Outlet></Outlet>
-        </section>
+        <Outlet></Outlet>
       </main>
     </>
   );

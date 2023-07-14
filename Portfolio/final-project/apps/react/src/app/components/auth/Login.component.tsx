@@ -77,7 +77,7 @@ export default function Login() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-8 items-center bg-white h-full">
+    <section className="flex flex-col gap-8 items-center bg-white h-full">
       <h2 className="mt-12 text-2xl">Accedi</h2>
       {errorMsg && <ErrorMsg message={errorMsg}></ErrorMsg>}
       <form
@@ -116,6 +116,6 @@ export default function Login() {
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }

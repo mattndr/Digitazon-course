@@ -15,7 +15,7 @@ export default function ErrorMsg({
             <XMarkIcon className="h-4 w-4 text-gray-900" />
           </button>
         )}
-        <div>{message}</div>
+        <p>{message}</p>
       </div>
     </div>
   );

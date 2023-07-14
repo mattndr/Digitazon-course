@@ -14,7 +14,6 @@ export default function Courses() {
               `${import.meta.env.VITE_SERVER_URL}/courses?search=${search}`
             )
           ).json();
-          console.log(res.data);
           setCourses(res.data);
         })()
       : (async function getCourses() {
@@ -27,20 +26,18 @@ export default function Courses() {
   }, [searchParams]);
 
   return (
-    <>
-      <header>
-        <h2 className="mb-14 mt-16 text-3xl font-bold text-center">
-          Corsi{' '}
-          {search ? (
-            <>
-              <span className="text-xl font-normal"> che includono </span>
-              <span className="text-2xl font-bold">'{search}'</span>
-            </>
-          ) : (
-            ''
-          )}
-        </h2>
-      </header>
+    <section>
+      <h2 className="mb-14 mt-16 text-3xl font-bold text-center">
+        Corsi{' '}
+        {search ? (
+          <>
+            <span className="text-xl font-normal"> che includono </span>
+            <span className="text-2xl font-bold">'{search}'</span>
+          </>
+        ) : (
+          ''
+        )}
+      </h2>
       {courses.length > 0 ? (
         <div className="flex flex-col justify-center gap-10 mx-[16%]">
           {courses.map((c, i) => (
@@ -52,13 +49,12 @@ export default function Courses() {
           Attualmente non c'è nessun corso disponibile.
         </p>
       )}
-    </>
+    </section>
   );
 }
 
 function Course({ course }) {
   const navigate = useNavigate();
-  console.log(course.imageUrl);
   return (
     <article className="flex items-center gap-12 border-2 bg-gray-50 rounded-lg h-60">
       <div

@@ -60,7 +60,6 @@ export default function CourseDetails() {
         );
         if (response.ok) {
           const course = (await response.json()).data;
-          console.log(course);
           setCourseData(course);
         } else {
           setErrorMsg(
@@ -125,9 +124,9 @@ export default function CourseDetails() {
                   ACQUISTA a {courseData['price']} €
                 </button>
               ) : (
-                <div className="text-xl text-white mr-[7.5%] py-4 px-10 bg-gray-700">
+                <p className="text-xl text-white mr-[7.5%] py-4 px-10 bg-gray-700">
                   ACQUISTATO
-                </div>
+                </p>
               )}
             </div>
             <h2 className="text-3xl mb-8 mt-4 text-center font-bold [word-spacing:2px]">
@@ -146,9 +145,9 @@ export default function CourseDetails() {
                 }
               />
             </div>
-            <div className="text-center w-[95%] bg-gray-50 mx-auto border-l-8 border-l-gray-300 border-r-8 border-r-gray-100 py-10 mt-12 px-8 text-lg [word-spacing:2px]">
+            <p className="text-center w-[95%] bg-gray-50 mx-auto border-l-8 border-l-gray-300 border-r-8 border-r-gray-100 py-10 mt-12 px-8 text-lg [word-spacing:2px]">
               {courseData['description']}
-            </div>
+            </p>
           </div>
           {courseData['todos'].length > 0 && (
             <div className="flex flex-col gap-12">

@@ -49,7 +49,6 @@ export default function CourseManagement() {
     }
   };
 
-  // Needed when refreshing a page after a course update
   useEffect(() => {
     if (!userId) navigate('/auth/login');
     (async function getData() {
@@ -68,7 +67,6 @@ export default function CourseManagement() {
         );
         if (response.ok) {
           const course = (await response.json()).data;
-          console.log(course);
           setCourseData(course);
         } else {
           setErrorMsg(
@@ -97,14 +95,14 @@ export default function CourseManagement() {
         id="popup-root"
         className="[&_.popup-content]:max-h-[90%] [&_.popup-content]:w-[65%] [&_.popup-content]:overflow-scroll"
       ></div>
-      <div className="py-12 mx-[12.5%] h-full">
+      <section className="py-12 mx-[17.5%] h-full">
         <button
-          className="p-2 border bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+          className="p-2 border bg-gray-700 text-white w-fit rounded-lg hover:bg-gray-600"
           onClick={() => navigate(-1)}
         >
           Torna alla dashboard
         </button>
-        <h2 className="mt-4 mb-8 flex justify-center text-2xl">
+        <h2 className="mt-4 mb-12 font-bold flex justify-center text-2xl">
           Dettagli del corso
         </h2>
         {errorMsg && (
@@ -198,21 +196,21 @@ export default function CourseManagement() {
                 {courseData && (
                   <ul className="flex flex-col gap-11 py-4 mx-[8%] my-6">
                     <li>
-                      <div className="font-bold">Titolo</div>
+                      <p className="font-bold">Titolo</p>
                       <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
                         {courseData['title']}
                       </div>
                     </li>
                     <li>
-                      <div className="font-bold">Descrizione</div>
+                      <p className="font-bold">Descrizione</p>
                       <p className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3">
                         {courseData['description']}
                       </p>
                     </li>
                     <li>
-                      <div className="font-bold">
+                      <p className="font-bold">
                         Link del video di presentazione
-                      </div>
+                      </p>
                       <a
                         href={courseData['presentationVideoUrl']}
                         target="_blank"
@@ -223,9 +221,9 @@ export default function CourseManagement() {
                       </a>
                     </li>
                     <li>
-                      <div className="font-bold">
+                      <p className="font-bold">
                         Link dell'immagine di copertina
-                      </div>
+                      </p>
                       <a
                         href={courseData['imageUrl']}
                         target="_blank"
@@ -237,21 +235,21 @@ export default function CourseManagement() {
                     </li>
                     {courseData['todos'] && (
                       <li>
-                        <div className="font-bold">Programma</div>
+                        <p className="font-bold">Programma</p>
                         <div className="bg-white border-l-4 border-gray-300 px-4 py-3 mt-3">
                           <TodoList itemList={courseData['todos']}></TodoList>
                         </div>
                       </li>
                     )}
                     <li>
-                      <div className="font-bold">Prezzo</div>
+                      <p className="font-bold">Prezzo</p>
                       <div className="bg-white border-l-4 border-gray-300 px-3 py-2 mt-3 w-fit">
                         {courseData['price']} €
                       </div>
                     </li>
                     <li className="flex gap-4 flex-wrap	justify-between">
                       <div>
-                        <div className="font-bold">Creato il</div>
+                        <p className="font-bold">Creato il</p>
                         <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
                           {new Date(
                             courseData['creationDatetime']
@@ -261,7 +259,7 @@ export default function CourseManagement() {
                       <div>
                         {courseData['publicationDatetime'] && (
                           <div>
-                            <div className="font-bold">Pubblicato il</div>
+                            <p className="font-bold">Pubblicato il</p>
                             <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
                               {new Date(
                                 courseData['publicationDatetime']
@@ -273,7 +271,7 @@ export default function CourseManagement() {
                       <div>
                         {courseData['startingDatetime'] && (
                           <div>
-                            <div className="font-bold">Avviato il</div>
+                            <p className="font-bold">Avviato il</p>
                             <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
                               {new Date(
                                 courseData['startingDatetime']
@@ -285,7 +283,7 @@ export default function CourseManagement() {
                       <div>
                         {courseData['endingDatetime'] && (
                           <div>
-                            <div className="font-bold">Terminato il</div>
+                            <p className="font-bold">Terminato il</p>
                             <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
                               {new Date(
                                 courseData['endingDatetime']
@@ -352,7 +350,7 @@ export default function CourseManagement() {
             )}
           </>
         )}
-      </div>
+      </section>
     </div>
   );
 }

@@ -75,16 +75,16 @@ export default function UserDetails() {
             <div className="px-[5%] flex flex-col gap-20">
               <div className="flex py-2 mt-8 justify-center items-center">
                 <div className="bg-gray-500 py-1 w-full rounded-lg"></div>
-                <div className="bg-white px-16 py-3 text-2xl font-bold whitespace-nowrap">
+                <p className="bg-white px-16 py-3 text-2xl font-bold whitespace-nowrap">
                   {userData['fullName'].firstName +
                     ' ' +
                     userData['fullName'].lastName}
-                </div>
+                </p>
                 <div className="bg-gray-500 py-1 w-full rounded-lg"></div>
               </div>
               {userData['sellerProfile'] && (
                 <div className="flex flex-col items-center text-lg text-center bg-gray-100 w-[85%] mx-auto py-6 px-10 border-x-4 border-gray-300">
-                  <div>{userData['sellerProfile'].description}</div>
+                  <p>{userData['sellerProfile'].description}</p>
                 </div>
               )}
               <div className="mx-auto w-[85%] h-[30%] p-2 mt-8 bg-gray-700">
@@ -116,9 +116,9 @@ export default function UserDetails() {
                         className="flex items-center gap-8 border-l-8 border-cyan-500 px-4 py-1"
                       >
                         <div className="grow">
-                          <div className="text-lg flex justify-left flex-col font-bold mb-2">
+                          <p className="text-lg flex justify-left flex-col font-bold mb-2">
                             {course.title}
-                          </div>
+                          </p>
                           <p>{course.description.substring(0, 200) + '...'}</p>
                         </div>
                         <button
@@ -132,9 +132,9 @@ export default function UserDetails() {
                   </ul>
                 </section>
               ) : (
-                <div className="mt-4 mb-32 bg-gray-100 p-4 text-center text-lg border-t-2">
+                <p className="mt-4 mb-32 bg-gray-100 p-4 text-center text-lg border-t-2">
                   Attualmente il venditore non ha corsi attivi.
-                </div>
+                </p>
               )}
             </div>
           </div>

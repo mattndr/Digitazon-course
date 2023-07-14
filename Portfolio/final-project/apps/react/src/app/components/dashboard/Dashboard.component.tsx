@@ -49,8 +49,6 @@ export default function Dashboard() {
           import.meta.env.VITE_SERVER_URL
         }/users/${userId}/profile?isSeller=1&fullName=1`
       );
-      console.log(data);
-
       if (data['isSeller']) {
         await getData(
           `${import.meta.env.VITE_SERVER_URL}/users/${userId}/courses`,
@@ -62,7 +60,6 @@ export default function Dashboard() {
         `${import.meta.env.VITE_SERVER_URL}/courses?enrolledUser=${userId}`,
         'enrolledCourses'
       );
-      console.log(data);
       setDashboardData(data);
     })();
   }, []);
@@ -130,9 +127,9 @@ export default function Dashboard() {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center mt-6">
+                    <p className="text-center mt-6">
                       Attualmente non sei iscritto ad alcun corso.
-                    </div>
+                    </p>
                   )}
                 </section>
                 <section className="mt-12">
@@ -162,9 +159,9 @@ export default function Dashboard() {
                                 })
                               }
                             >
-                              <div className="w-fit mx-auto text-lg px-2 my-2 font-semibold">
+                              <p className="w-fit mx-auto text-lg px-2 my-2 font-semibold">
                                 {course.title}
-                              </div>
+                              </p>
                               {!course.publicationDatetime && (
                                 <small className="block mt-3">
                                   Creato il{' '}
@@ -211,9 +208,9 @@ export default function Dashboard() {
                           ))}
                         </div>
                       ) : (
-                        <div className="text-center mt-8">
+                        <p className="text-center mt-8">
                           Nessun corso trovato.
-                        </div>
+                        </p>
                       )}
                     </>
                   )}
