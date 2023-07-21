@@ -7,7 +7,7 @@ export default function DoneMsg({
 }) {
   return (
     <div
-      className={`bg-cyan-50 pt-3 pb-5 px-4 my-4 border-l-8 border-cyan-500 text-lg text-center ${customClasses}`}
+      className={`bg-cyan-100 pt-3 pb-5 px-4 my-4 border-l-8 border-cyan-500 text-lg text-center ${customClasses}`}
     >
       <div className="flex flex-col">
         {setPropFunction && (

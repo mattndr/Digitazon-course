@@ -13,7 +13,7 @@ import {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(404).send({
+    return res.status(400).send({
       error: true,
       message: 'Inserire email e password.',
     });
@@ -22,7 +22,7 @@ export const login = async (req, res) => {
   if (!user || !(await bcrypt.compare(password, user.password))) {
     return res.status(404).send({
       error: true,
-      message: 'Email e/o password non corrette.',
+      message: 'Email e/o password non corretta.',
     });
   }
   const token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN, {

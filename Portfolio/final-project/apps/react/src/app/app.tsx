@@ -19,24 +19,24 @@ function Main() {
 
   return (
     <>
-      <header className="flex justify-between items-center gap-8 py-7 px-20 bg-cyan-600 border-b-4 border-gray-600">
+      <header className="flex justify-between items-center gap-8 py-7 px-20 bg-cyan-600 border-b-4 border-gray-600 bg-gradient-to-r from-cyan-400 to-blue-500">
         <div className="basis-[33%]">
           <h1
-            className="text-2xl font-mono w-fit font-bold cursor-pointer rounded-full px-8 py-2 border-l-8 border-l-cyan-500 border-r-8 border-r-white hover:bg-cyan-500 active:bg-cyan-400"
+            className="text-3xl font-mono w-fit font-bold cursor-pointer rounded-full px-8 py-2 border-l-8 border-l-cyan-200 border-r-8 border-r-gray-700 hover:bg-cyan-200 active:bg-cyan-100"
             onClick={() => navigate('/courses')}
           >
-            ProgettoFin
+            Nextep
           </h1>
         </div>
         <div className="flex basis-[33%]">
           <input
             placeholder="Cerca un corso"
-            className="border-2 border-gray-300 p-1 rounded-lg rounded-r-none border-r-0 w-full placeholder:pl-3"
+            className="border-2 border-gray-300 p-1 h-10 rounded-lg rounded-r-none border-r-0 w-full placeholder:pl-3"
             value={searchContent}
             onChange={(e) => setSearchContent(e.target.value)}
           ></input>
           <button
-            className="border-3 rounded-lg py-1 px-2 rounded-l-none border-l-0 text-white bg-gray-700 hover:bg-gray-600"
+            className="border-3 rounded-lg py-1 px-4 rounded-l-none border-l-0 text-white bg-gray-700 hover:bg-gray-600"
             onClick={() => {
               if (!searchContent) return;
               setSearchContent('');
@@ -56,7 +56,7 @@ function Main() {
                 Accedi
               </button>
               <button
-                className="text-lg rounded-lg py-1.5 px-2.5 bg-gray-700 text-gray-50 hover:bg-gray-600 active:bg-gray-500 hover:text-gray-50 shadow-md"
+                className="text-lg rounded-lg py-1.5 px-4 bg-gray-700 text-gray-50 hover:bg-gray-600 active:bg-gray-500 hover:text-gray-50 shadow-md"
                 onClick={() => navigate('auth/signup')}
               >
                 Registrati
@@ -78,7 +78,7 @@ function Main() {
                 Dashboard
               </button>
               <button
-                className="text-lg rounded-lg py-1.5 px-5 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
+                className="text-xl rounded-lg py-1.5 px-5 bg-gray-700 text-gray-50 hover:bg-gray-600 active:bg-gray-500 hover:text-gray-50 shadow-md"
                 onClick={() => navigate(`/profile`)}
               >
                 Profilo
@@ -106,7 +106,7 @@ function CheckLocalStorage({ component }) {
     }
     const now = new Date();
     // compare the expiry time of the item with the current time
-    if (now.getTime() > parseInt(cookieExpTime)) {
+    if (now.getTime() > parseInt(cookieExpTime, 10)) {
       // If the item is expired, delete the item from storage
       localStorage.removeItem('userId');
       localStorage.removeItem('userId-exp');

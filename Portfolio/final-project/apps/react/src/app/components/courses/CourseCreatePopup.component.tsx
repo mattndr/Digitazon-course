@@ -71,7 +71,7 @@ export default function CoursePopup({ userFullName }) {
         setErrorMsg('');
       } else {
         setErrorMsg(
-          response.headers.get('content-type') === 'application/json'
+          response.headers.get('content-type').includes('application/json')
             ? (await response.json()).message
             : `${response.status} ${response.statusText}`
         );
@@ -92,11 +92,11 @@ export default function CoursePopup({ userFullName }) {
   }, [errorMsg]);
 
   return (
-    <div className="flex flex-col bg-gray-50 items-center">
+    <div className="flex flex-col bg-blue-50 items-center">
       {errorMsg && <ErrorMsg message={errorMsg}></ErrorMsg>}
       {!registrationDoneMsg && (
         <section className="w-full">
-          <h4 className="text-2xl p-2 border-b-4 border-cyan-500 w-full text-center">
+          <h4 className="text-2xl p-2 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 w-full text-center">
             Crea un corso
           </h4>
           <form
@@ -165,7 +165,7 @@ export default function CoursePopup({ userFullName }) {
             <div>
               <button
                 type="submit"
-                className="w-[50%] rounded-lg block py-3 px-4 mt-8 text-lg mx-auto text-center bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
+                className="w-fit rounded-lg block py-3 px-8 mt-8 text-lg mx-auto text-center bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
               >
                 Conferma
               </button>
@@ -174,11 +174,14 @@ export default function CoursePopup({ userFullName }) {
         </section>
       )}
       {registrationDoneMsg && (
-        <div>
-          <DoneMsg message={registrationDoneMsg}></DoneMsg>
+        <div className="w-full bg-white">
+          <DoneMsg
+            message={registrationDoneMsg}
+            customClasses="w-[50%] mx-auto text-xl mt-8"
+          ></DoneMsg>
           <button
             onClick={() => navigate(`/courses/${newCourseId}/management`)}
-            className="p-4 my-4 text-center bg-cyan-400 hover:cyan-500"
+            className="block w-fit mx-auto p-4 mt-12 mb-8 text-center bg-cyan-400 hover:cyan-300 active:cyan-200 rounded-lg"
           >
             Vai alla pagina del corso
           </button>

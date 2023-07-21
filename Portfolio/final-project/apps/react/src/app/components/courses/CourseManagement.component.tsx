@@ -37,7 +37,7 @@ export default function CourseManagement() {
         setDoneMsg('Operazione effettuata correttamente.');
       } else {
         setErrorMsg(
-          response.headers.get('content-type') === 'application/json'
+          response.headers.get('content-type').includes('application/json')
             ? (await response.json()).message
             : `${response.status} ${response.statusText}`
         );
@@ -70,7 +70,7 @@ export default function CourseManagement() {
           setCourseData(course);
         } else {
           setErrorMsg(
-            response.headers.get('content-type') === 'application/json'
+            response.headers.get('content-type').includes('application/json')
               ? (await response.json()).message
               : `${response.status} ${response.statusText}`
           );
@@ -97,7 +97,7 @@ export default function CourseManagement() {
       ></div>
       <section className="py-12 mx-[17.5%] h-full">
         <button
-          className="p-2 border bg-gray-700 text-white w-fit rounded-lg hover:bg-gray-600"
+          className="p-2 border bg-gray-700 text-white w-fit rounded-lg hover:bg-gray-600 active:bg-gray-500"
           onClick={() => navigate(-1)}
         >
           Torna alla dashboard
@@ -197,13 +197,13 @@ export default function CourseManagement() {
                   <ul className="flex flex-col gap-11 py-4 mx-[8%] my-6">
                     <li>
                       <p className="font-bold">Titolo</p>
-                      <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
+                      <div className="bg-white border-l-4 border-blue-100 px-4 py-2 mt-3 w-fit">
                         {courseData['title']}
                       </div>
                     </li>
                     <li>
                       <p className="font-bold">Descrizione</p>
-                      <p className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3">
+                      <p className="bg-white border-l-4 border-blue-100 px-4 py-2 mt-3 whitespace-pre-line">
                         {courseData['description']}
                       </p>
                     </li>
@@ -215,7 +215,7 @@ export default function CourseManagement() {
                         href={courseData['presentationVideoUrl']}
                         target="_blank"
                         rel="noreferrer"
-                        className="border-l-4 border-gray-300 block px-4 py-2 mt-3 w-fit bg-white hover:bg-gray-200"
+                        className="border-l-4 border-blue-100 block px-4 py-2 mt-3 w-fit bg-white hover:bg-blue-100"
                       >
                         {courseData['presentationVideoUrl']}
                       </a>
@@ -228,7 +228,7 @@ export default function CourseManagement() {
                         href={courseData['imageUrl']}
                         target="_blank"
                         rel="noreferrer"
-                        className="border-l-4 border-gray-300 block px-4 py-2 mt-3 w-fit bg-white hover:bg-gray-200"
+                        className="border-l-4 border-blue-100 block px-4 py-2 mt-3 w-fit bg-white hover:bg-blue-100"
                       >
                         {courseData['imageUrl']}
                       </a>
@@ -236,21 +236,25 @@ export default function CourseManagement() {
                     {courseData['todos'] && (
                       <li>
                         <p className="font-bold">Programma</p>
-                        <div className="bg-white border-l-4 border-gray-300 px-4 py-3 mt-3">
-                          <TodoList itemList={courseData['todos']}></TodoList>
+                        <div className="bg-white border-l-4 border-blue-100 px-4 py-3 mt-3">
+                          {courseData['todos'].length > 0 ? (
+                            <TodoList itemList={courseData['todos']}></TodoList>
+                          ) : (
+                            <p>Nessun programma definito</p>
+                          )}
                         </div>
                       </li>
                     )}
                     <li>
                       <p className="font-bold">Prezzo</p>
-                      <div className="bg-white border-l-4 border-gray-300 px-3 py-2 mt-3 w-fit">
+                      <div className="bg-white border-l-4 border-blue-100 px-3 py-2 mt-3 w-fit">
                         {courseData['price']} €
                       </div>
                     </li>
                     <li className="flex gap-4 flex-wrap	justify-between">
                       <div>
                         <p className="font-bold">Creato il</p>
-                        <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
+                        <div className="bg-white border-l-4 border-blue-100 px-4 py-2 mt-3 w-fit">
                           {new Date(
                             courseData['creationDatetime']
                           ).toLocaleString('it-IT')}
@@ -260,7 +264,7 @@ export default function CourseManagement() {
                         {courseData['publicationDatetime'] && (
                           <div>
                             <p className="font-bold">Pubblicato il</p>
-                            <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
+                            <div className="bg-white border-l-4 border-blue-100 px-4 py-2 mt-3 w-fit">
                               {new Date(
                                 courseData['publicationDatetime']
                               ).toLocaleString('it-IT')}
@@ -272,7 +276,7 @@ export default function CourseManagement() {
                         {courseData['startingDatetime'] && (
                           <div>
                             <p className="font-bold">Avviato il</p>
-                            <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
+                            <div className="bg-white border-l-4 border-blue-100 px-4 py-2 mt-3 w-fit">
                               {new Date(
                                 courseData['startingDatetime']
                               ).toLocaleString('it-IT')}
@@ -284,7 +288,7 @@ export default function CourseManagement() {
                         {courseData['endingDatetime'] && (
                           <div>
                             <p className="font-bold">Terminato il</p>
-                            <div className="bg-white border-l-4 border-gray-300 px-4 py-2 mt-3 w-fit">
+                            <div className="bg-white border-l-4 border-blue-100 px-4 py-2 mt-3 w-fit">
                               {new Date(
                                 courseData['endingDatetime']
                               ).toLocaleString('it-IT')}
@@ -310,7 +314,7 @@ export default function CourseManagement() {
                       extended={true}
                       innerEnum={true}
                       olClasses="list-none"
-                      className="bg-gray-100 py-2 px-12 border-l-8 border-cyan-500"
+                      className="bg-gray-100 py-2 px-12 border-l-8 bg-blue-50 border-blue-400"
                     ></TodoList>
                   </div>
                 </section>
@@ -322,7 +326,7 @@ export default function CourseManagement() {
                   Utenti iscritti al corso
                 </h3>
                 {courseData['enrolledUsers'].length > 0 ? (
-                  <div className="border-t-4 border-t-gray-500 bg-gray-100 pb-2">
+                  <div className="border-t-8 border-t-gray-500 bg-gray-100 pb-2">
                     <p className="text-center text-lg my-8">
                       Numero di iscritti: {courseData['enrolledUsers'].length}
                     </p>
@@ -366,10 +370,8 @@ export function TodoList({
     <ol className={`flex flex-col gap-4 list-decimal px-4 ${olClasses}`}>
       {itemList.map((item, i) => (
         <li key={i}>
-          <div className={`flex flex-col ${className}`}>
-            <div
-              className={`flex flex-col gap-2 ${extended ? 'my-2 gap-6' : ''}`}
-            >
+          <div className={`flex flex-col rounded-xl ${className}`}>
+            <div className={`flex flex-col gap-2 py-2`}>
               <div className="flex justify-between items-center">
                 <div className="font-semibold">
                   {innerEnum && (
@@ -379,33 +381,33 @@ export function TodoList({
                   )}
                   {item.title}
                 </div>
-                <div>
+                <div className="flex flex-col items-center">
+                  {extended && item['completionDate'] && (
+                    <div className="mt-1 mb-2 gap-2 text-blue-500">
+                      <p>
+                        Completato il{' '}
+                        {
+                          new Date(item['completionDate'])
+                            .toLocaleString('it-IT')
+                            .split(',')[0]
+                        }
+                      </p>
+                    </div>
+                  )}
                   {extended && item.linksToRecorderLessons && (
                     <a
                       href={item.linksToRecorderLessons}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-1 py-2 w-fit text-md items-center px-2 bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-300 text-white font-bold rounded-lg whitespace-nowrap"
+                      className="px-1 py-1 w-fit text-md items-center px-4 text-lg bg-blue-500 hover:bg-blue-400 active:bg-blue-300 text-white rounded-lg whitespace-nowrap"
                     >
                       Vai alle lezioni
                     </a>
                   )}
                 </div>
               </div>
-              <p>{item.description}</p>
+              <p className="whitespace-pre-line">{item.description}</p>
             </div>
-            {extended && item['completionDate'] && (
-              <div className="mt-1 mb-2 gap-2 text-cyan-500">
-                <p>
-                  Completato il{' '}
-                  {
-                    new Date(item['completionDate'])
-                      .toLocaleString('it-IT')
-                      .split(',')[0]
-                  }
-                </p>
-              </div>
-            )}
           </div>
         </li>
       ))}

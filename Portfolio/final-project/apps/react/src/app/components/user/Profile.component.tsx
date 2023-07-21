@@ -36,7 +36,7 @@ export default function Profile() {
         setUpdatingData(false);
       } else
         setErrorMsg(
-          response.headers.get('content-type') === 'application/json'
+          response.headers.get('content-type').includes('application/json')
             ? (await response.json()).message
             : `${response.status} ${response.statusText}`
         );
@@ -62,7 +62,7 @@ export default function Profile() {
         navigate('/courses');
       } else {
         setErrorMsg(
-          response.headers.get('content-type') === 'application/json'
+          response.headers.get('content-type').includes('application/json')
             ? (await response.json()).message
             : `${response.status} ${response.statusText}`
         );
@@ -94,7 +94,7 @@ export default function Profile() {
           setErrorMsg('');
         } else {
           setErrorMsg(
-            response.headers.get('content-type') === 'application/json'
+            response.headers.get('content-type').includes('application/json')
               ? (await response.json()).message
               : `${response.status} ${response.statusText}`
           );
@@ -111,16 +111,16 @@ export default function Profile() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log(errorMsg);
   }, [errorMsg, doneMsg]);
 
   return (
-    <div className="h-full flex flex-col gap-8 ">
-      <div className="h-full pt-10">
+    <div className="h-full flex flex-col gap-8">
+      <div className="h-full pt-10 bg-gradient-to-r from-cyan-50 to-blue-100">
         {errorMsg && (
           <ErrorMsg
             message={errorMsg}
             customClasses="mx-auto mb-12 w-[50%]"
+            setPropFunction={setErrorMsg}
           ></ErrorMsg>
         )}
         {doneMsg && (
@@ -131,20 +131,20 @@ export default function Profile() {
           ></DoneMsg>
         )}
         {Object.keys(userData).length > 0 && (
-          <section>
-            <h2 className="text-2xl font-bold text-center py-1 mb-10 mx-auto">
+          <section className="text-lg bg-gradient-to-r from-cyan-50 to-blue-100">
+            <h2 className="text-3xl font-bold text-center mt-8 py-1 mb-12 mx-auto">
               Profilo
             </h2>
             <button
-              className="text-lg w-fit px-8 mb-12 mx-auto rounded-lg py-1.5 px-2.5 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
+              className="text-lg w-fit px-8 mb-4 mx-auto rounded-lg py-1.5 px-2.5 bg-gray-700 text-gray-50 hover:bg-gray-600 hover:text-gray-50 shadow-md"
               onClick={handleLogout}
             >
               Logout
             </button>
             <div className="pb-20">
               {userData['isSeller'] && (
-                <div className="pt-20 border-b-2 border-b-gray-100 px-[25%] bg-gray-100">
-                  <h3 className="text-xl mb-12 font-bold text-center">
+                <div className="pt-20 px-[25%]">
+                  <h3 className="text-2xl mb-12 font-bold text-center">
                     Dettagli venditore
                   </h3>
                   <div className="flex flex-col gap-12 bg-white px-14 py-10 border-t-4 border-t-gray-500 [&_label]:font-bold">
@@ -159,7 +159,9 @@ export default function Profile() {
                           </button>
                         </div>
                       )}
-                      <label htmlFor="description">Descrizione</label>
+                      <label htmlFor="description" className="text-xl">
+                        Descrizione
+                      </label>
                       {updatingData ? (
                         <textarea
                           id="description"
@@ -174,20 +176,20 @@ export default function Profile() {
                           }
                         ></textarea>
                       ) : (
-                        <div
+                        <p
                           id="description"
-                          className="bg-white border-l-4 border-gray-200 pl-2 py-1"
+                          className="bg-white border-l-4 border-gray-200 pl-2 py-1 whitespace-pre-line"
                         >
                           {userData['sellerProfile']
                             ? userData['sellerProfile'].description
                               ? userData['sellerProfile'].description
                               : 'Nessuna descrizione impostata'
                             : 'Nessuna descrizione impostata'}
-                        </div>
+                        </p>
                       )}
                     </div>
                     <div className="flex flex-col gap-4">
-                      <label htmlFor="presentationVideoUrl">
+                      <label htmlFor="presentationVideoUrl" className="text-xl">
                         Link al video di presentazione
                       </label>
                       <div className="flex justify-between items-center gap-6">
@@ -206,7 +208,7 @@ export default function Profile() {
                             }
                           ></input>
                         ) : (
-                          <div
+                          <p
                             id="presentationVideoUrl"
                             className="grow bg-white border-l-4 border-gray-200 pl-2"
                           >
@@ -215,7 +217,7 @@ export default function Profile() {
                                 ? userData['sellerProfile'].presentationVideoUrl
                                 : 'Nessun link impostato'
                               : 'Nessun link impostato'}
-                          </div>
+                          </p>
                         )}
                         <a
                           href={
@@ -239,7 +241,8 @@ export default function Profile() {
                       <button
                         className="mt-10 mb-2 block w-min mx-auto py-3 px-4 bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200 rounded-lg border w-full"
                         onClick={() => {
-                          setInputs(userData['sellerProfile']);
+                          if (userData['sellerProfile'])
+                            setInputs(userData['sellerProfile']);
                           setUpdatingData(true);
                         }}
                       >
@@ -272,15 +275,15 @@ export default function Profile() {
                   </div>
                 </div>
               )}
-              <div className="flex justify-between px-[25%] bg-gray-100 py-20 border-b-2 border-b-gray-100">
+              <div className="flex justify-between px-[25%] py-20 bg-gradient-to-r from-cyan-50 to-blue-100">
                 <section className="w-fit">
                   <div className="flex flex-col w-fit items-start bg-gray-0">
-                    <h3 className="my-4 text-xl w-full font-semibold text-center">
+                    <h3 className="my-4 text-2xl w-full font-semibold text-center">
                       Informazioni personali
                     </h3>
-                    <div className="flex flex-col w-fit bg-gray-200 mt-8 py-2 [&_div]:bg-white [&_div]:px-10 [&_div]:py-4">
+                    <div className="flex flex-col w-fit bg-gray-400 mt-8 py-1 [&_div]:bg-white [&_div]:px-10 [&_div]:py-4">
                       <div>
-                        <p className="font-semibold">Nome</p>
+                        <p className="font-semibold bg-white pt-2">Nome</p>
                         <p>
                           {userData['fullName'].firstName +
                             ' ' +
@@ -311,13 +314,15 @@ export default function Profile() {
                       </div>
                       <div>
                         <p className="font-semibold">Numero di telefono</p>
-                        <p>{userData['phoneNumber']}</p>
+                        <p className="bg-white pb-2">
+                          {userData['phoneNumber']}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </section>
                 <div className="flex flex-col gap-4 items-center my-4 h-fit bg-gray-0">
-                  <p className="pb-1 px-2 text-xl font-semibold">
+                  <p className="pb-1 px-2 text-2xl font-semibold">
                     Tipologia di account
                   </p>
                   {userData['isSeller'] ? (
@@ -332,7 +337,7 @@ export default function Profile() {
                         </p>
                       </div>
                       <button
-                        className="mt-14 p-3 bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200 rounded-lg border w-full"
+                        className="mt-14 p-3 text-lg bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200 rounded-lg border w-full"
                         onClick={() => updateSellerStatus({ isSeller: true })}
                       >
                         Diventa venditore

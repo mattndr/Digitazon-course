@@ -29,7 +29,7 @@ export default function Dashboard() {
           data = { ...data, ...receivedData };
         } else {
           setErrorMsg(
-            response.headers.get('content-type') === 'application/json'
+            response.headers.get('content-type').includes('application/json')
               ? (await response.json()).message
               : `${response.status} ${response.statusText}`
           );
@@ -69,36 +69,36 @@ export default function Dashboard() {
   }, [errorMsg]);
 
   return (
-    <div className="pt-16 mx-[12.5%] h-full">
+    <div className="pt-16 px-[12.5%] h-full bg-gradient-to-r from-cyan-50 to-blue-100">
       {errorMsg && (
         <ErrorMsg
           message={errorMsg}
-          customClasses="mx-auto mb-12 mx-[20%]"
+          customClasses="mx-auto mt-8 w-[50%]"
+          setPropFunction={setErrorMsg}
         ></ErrorMsg>
       )}
       {!errorMsg && (
         <>
-          {' '}
           <div
             id="popup-root"
             className="[&_.popup-content]:max-h-[90%] [&_.popup-content]:overflow-scroll"
           ></div>
-          <section>
-            <h2 className="flex justify-center text-2xl font-bold">
+          <section className="text-lg">
+            <h2 className="flex justify-center text-3xl font-bold">
               Dashboard
             </h2>
             {dashboardData && (
               <div className="mt-14 flex flex-col gap-12">
                 <section>
                   <h3 className="mt-4 mb-4 text-2xl text-center">
-                    Corsi a cui sei iscritto
+                    Corsi a cui sei iscritta/o
                   </h3>
                   {dashboardData['enrolledCourses'] &&
                   dashboardData['enrolledCourses'].length > 0 ? (
-                    <div className="mt-8 p-4 flex flex-wrap grow justify-evenly gap-4 bg-white">
+                    <div className="mt-8 p-4 flex flex-wrap grow justify-evenly gap-4">
                       {dashboardData['enrolledCourses'].map((course, i) => (
                         <button
-                          className={`basis-[55%] border-l-8 border-cyan-500 p-1 py-2 cursor-pointer bg-gray-200 rounded-md hover:bg-gray-300 hover:border-cyan-600 ${
+                          className={`basis-[55%] border-l-8 border-cyan-500 p-1 py-2 cursor-pointer bg-white rounded-xl hover:bg-gray-50 active:bg-gray-100 hover:border-cyan-600 ${
                             course.endingDatetime
                               ? 'opacity-40 order-last border-gray-500'
                               : ''
@@ -127,8 +127,8 @@ export default function Dashboard() {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-center mt-6">
-                      Attualmente non sei iscritto ad alcun corso.
+                    <p className="text-center mt-6 bg-white w-fit mx-auto px-12 py-8 rounded-lg">
+                      Attualmente non sei iscritta/o ad alcun corso.
                     </p>
                   )}
                 </section>
@@ -143,11 +143,11 @@ export default function Dashboard() {
                           userFullName={dashboardData['fullName']}
                         ></NewCoursePopup>
                       </div>
-                      {dashboardData['courses'].length > 0 ? (
-                        <div className="mt-8 mb-20 p-8 flex flex-wrap grow justify-evenly gap-4 bg-white">
+                      {dashboardData['courses'].length > 0 && (
+                        <div className="mt-8 mb-20 p-8 flex flex-wrap grow justify-evenly gap-4">
                           {dashboardData['courses'].map((course, i) => (
                             <button
-                              className={`basis-[55%] border-l-8 border-cyan-500 p-1 py-2 cursor-pointer bg-gray-200 rounded-md hover:bg-gray-300 hover:border-cyan-600 ${
+                              className={`basis-[55%] border-l-8 border-cyan-500 p-1 py-2 cursor-pointer bg-white rounded-xl hover:bg-gray-50 active:bg-gray-100 hover:border-cyan-600 ${
                                 course.endingDatetime
                                   ? 'opacity-40 order-last border-gray-500 hover:border-gray-700'
                                   : ''
@@ -207,10 +207,6 @@ export default function Dashboard() {
                             </button>
                           ))}
                         </div>
-                      ) : (
-                        <p className="text-center mt-8">
-                          Nessun corso trovato.
-                        </p>
                       )}
                     </>
                   )}
@@ -229,7 +225,7 @@ function NewCoursePopup({ userFullName }) {
     <div>
       <Popup
         trigger={
-          <button className="p-2 mt-4 bg-cyan-400 rounded-lg hover:bg-cyan-500">
+          <button className="p-2 px-4 mt-4 bg-cyan-400 rounded-lg hover:bg-cyan-300 active:bg-cyan-200">
             Crea un corso
           </button>
         }

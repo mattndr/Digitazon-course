@@ -58,7 +58,7 @@ export default function TodosUpdatePopup({ inputCourse }) {
         setErrorMsg('');
       } else {
         setErrorMsg(
-          response.headers.get('content-type') === 'application/json'
+          response.headers.get('content-type').includes('application/json')
             ? (await response.json()).message
             : `${response.status} ${response.statusText}`
         );
@@ -80,16 +80,19 @@ export default function TodosUpdatePopup({ inputCourse }) {
         <ErrorMsg message={errorMsg} customClasses="mx-auto w-[50%]"></ErrorMsg>
       )}
       {doneMsg && (
-        <DoneMsg message={doneMsg} customClasses="mb-10 px-[5%]"></DoneMsg>
+        <DoneMsg
+          message={doneMsg}
+          customClasses="mb-10 mt-10 px-[5%]"
+        ></DoneMsg>
       )}
       {!doneMsg && (
         <>
-          <h4 className="text-xl font-bold p-2 bg-gray-100 border-b-4 border-cyan-400 w-full text-center">
+          <h4 className="text-2xl p-2 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 w-full text-center">
             Aggiorna l'avanzamento del corso
           </h4>
           <form
             onSubmit={handleSubmit}
-            className="overflow-y-scroll h-[80vh] [&_label]:block [&_label]:mb-2 [&_label]:p-1 [&_input]:bg-gray-0 [&_input]:p-1 [&_textarea]:p-1 w-full bg-gray-100 [&_label]:font-medium signup-form flex flex-col gap-6 border-2 p-8"
+            className="bg-blue-50 overflow-y-scroll h-[80vh] [&_label]:block [&_label]:mb-2 [&_label]:p-1 [&_input]:bg-gray-0 [&_input]:p-1 [&_textarea]:p-1 w-full bg-gray-100 [&_label]:font-medium signup-form flex flex-col gap-6 border-2 p-8"
           >
             {inputs.todos && (
               <div className="my-4">
@@ -102,7 +105,7 @@ export default function TodosUpdatePopup({ inputCourse }) {
             <div>
               <button
                 type="submit"
-                className="rounded-lg block py-3 px-4 mt-4 mx-auto text-center bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
+                className="rounded-lg block py-3 px-4 mt-4 mx-auto text-lg text-center bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
               >
                 Aggiorna
               </button>
@@ -180,12 +183,12 @@ function TodoListUpdate({ todoList, handleChange }) {
               </div>
             </div>
             {item['completionDate'] && (
-              <small className="pl-1 text-center text-cyan-600 font-semibold">
+              <p className="pl-1 text-center text-blue-600 basis-[20%]">
                 Completato il{' '}
                 <span className="block">
                   {new Date(item['completionDate']).toLocaleString('it-IT')}
                 </span>
-              </small>
+              </p>
             )}
           </div>
         </div>

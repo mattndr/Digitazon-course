@@ -66,7 +66,7 @@ export default function Signup() {
         setErrorMsg('');
       } else {
         setErrorMsg(
-          response.headers.get('content-type') === 'application/json'
+          response.headers.get('content-type').includes('application/json')
             ? (await response.json()).message
             : `${response.status} ${response.statusText}`
         );
@@ -89,12 +89,14 @@ export default function Signup() {
 
   return (
     <section className="flex flex-col gap-8 items-center min-h-full">
-      <h2 className="mt-16 mb-4 text-2xl">Registra un account</h2>
-      {errorMsg && <ErrorMsg message={errorMsg}></ErrorMsg>}
+      <h2 className="mt-24 mb-12 font-bold text-2xl">Registra un account</h2>
+      {errorMsg && (
+        <ErrorMsg message={errorMsg} customClasses="[&>div]:p-2"></ErrorMsg>
+      )}
       {!doneMsg ? (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-8 py-8 px-16 mb-16 bg-gray-100 border-t-4 border-gray-400 [&_div]:flex [&_div]:flex-col [&_div]:items-center	[&_input]:mt-3 [&_input]:font-medium [&_input]:border-l-4 [&_input]:mt-1 signup-form"
+          className="flex flex-col gap-8 py-8 px-20 mb-16 bg-gradient-to-r from-cyan-50 to-blue-100 border-t-4 border-cyan-500 [&_div]:flex [&_div]:flex-col [&_div]:items-center [&_label]:text-lg	[&_input]:mt-3 [&_input]:text-lg [&_input]:border-l-0 [&_input]:mt-1 signup-form"
         >
           <div>
             <label htmlFor="email">Email</label>
@@ -190,7 +192,7 @@ export default function Signup() {
               required
               value={inputs.address.province || 'AG'}
               onChange={handleChange}
-              className="p-1"
+              className="p-1 bg-white"
             >
               <option value="AG">Agrigento</option>
               <option value="AL">Alessandria</option>
@@ -323,10 +325,10 @@ export default function Signup() {
         </form>
       ) : (
         <>
-          <DoneMsg message={doneMsg}></DoneMsg>
+          <DoneMsg message={doneMsg} customClasses="[&>div]:p-2"></DoneMsg>
           <button
             onClick={() => navigate('/auth/login')}
-            className="p-4 text-center bg-cyan-400 hover:cyan-500 active:bg-cyan-200"
+            className="py-4 px-6 text-center text-xl rounded-lg bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-200"
           >
             Vai al login
           </button>
