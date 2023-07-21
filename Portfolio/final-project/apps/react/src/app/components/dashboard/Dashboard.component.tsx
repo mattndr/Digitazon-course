@@ -49,6 +49,7 @@ export default function Dashboard() {
           import.meta.env.VITE_SERVER_URL
         }/users/${userId}/profile?isSeller=1&fullName=1`
       );
+      if (errorMsg) return;
       if (data['isSeller']) {
         await getData(
           `${import.meta.env.VITE_SERVER_URL}/users/${userId}/courses`,
